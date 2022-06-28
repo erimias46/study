@@ -15,24 +15,68 @@ if (!$conn) {
 
 
 
-if (isset($_GET['delete'])) {
-    $id = $_GET['delete'];
-   
+if (isset($_GET['edit'])) {
+    
+  $id=$_GET['edit'];
+  
+  $sql = "SELECT * from personal where userid='$id'";
+                                       
+  $result = mysqli_query($conn, $sql);
+ while ($row = mysqli_fetch_assoc($result)) {
+
+  $pfirstname=$row['firstname'];
+  $plastname=$row['lastname'];
+  $pacadamic=$row['acadamic'];
+  $psex=$row['sex'];
+  $pemail=$row['email'];
+  $pcollege=$row['college'];
+  $pdepartment=$row['department'];
+  #$pscholar=$row['scholar'];
+  #$pphone=$row['phone'];
+  $paward=$row['award'];
+
+ }
+ $sql2 = "SELECT * from guarantee where userid='$id'";
+                                       
+ $result2 = mysqli_query($conn, $sql2);
+while ($row2 = mysqli_fetch_assoc($result2)) {
+
+ $gfirstname=$row2['firstname'];
+ $glastname=$row2['lastname'];
+ $gemail=$row2['email'];
+ $gsex=$row2['sex'];
+ $gphone=$row2['phone'];
 
 
-$sql = "DELETE FROM `personal` WHERE userid='$id';";
-$sql.= "DELETE FROM `personal` WHERE userid='$id';";
-$sql.= "DELETE FROM `personal` WHERE userid='$id';";
-$sql.= "DELETE FROM `personal` WHERE userid='$id'";
-
-if (mysqli_multi_query($conn, $sql)) {
-  echo "Record deleted successfully";
-} else {
-  echo "Error deleting record: " . mysqli_error($conn);
+ 
 }
 
+$sql3 = "SELECT * from university where userid='$id'";
+                                       
+ $result3 = mysqli_query($conn, $sql3);
+while ($row3 = mysqli_fetch_assoc($result3)) {
+
+$uniname=$row3['uniname'];
+ $unicountry=$row3['unicountry'];
+ $uniemail=$row3['uniemail'];
+ 
 }
 
+$sql4 = "SELECT * from contract where userid='$id'";
+                                       
+ $result4 = mysqli_query($conn, $sql4);
+while ($row4 = mysqli_fetch_assoc($result4)) {
+
+$sdate=$row4['sdate'];
+$edate=$row4['edate'];
+$pdf=$row4['pdf'];
+}
+
+
+
+
+
+}
 
 ?>
 
@@ -129,7 +173,7 @@ if (mysqli_multi_query($conn, $sql)) {
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="dashboard.html">
+                    <a class="navbar-brand" href="dashboard.php">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
@@ -202,7 +246,7 @@ if (mysqli_multi_query($conn, $sql)) {
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.html" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.php" aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
@@ -258,149 +302,219 @@ if (mysqli_multi_query($conn, $sql)) {
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
-            <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Three charts -->
-                <!-- ============================================================== -->
-                <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Visit</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash"><canvas width="67" height="30" style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ms-auto"><span class="counter text-success">659</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Page Views</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash2"><canvas width="67" height="30" style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ms-auto"><span class="counter text-purple">869</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Unique Visitor</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash3"><canvas width="67" height="30" style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ms-auto"><span class="counter text-info">911</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+            <div class="container my-5">
+    <div class="card">
+      <form action=" " method="post" enctype="multipart/form-data">
+        <!-- Card header -->
+        <div class="card-header py-4 px-5 bg-light border-0">
+          <h4 class="mb-0 fw-bold" style="padding-top:40px">Update Information</h4>
+        </div>
+
+        <!-- Card body -->
+        <div class="card-body px-5">
+          <!-- Account section -->
+          <div class="row gx-xl-5">
+            <div class="col-md-4">
+              <h5>Personal Infromation</h5>
+              <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam et ducimus velit, facere quaerat debitis modi asperiores aspernatur corrupti, sit aliquam.</p>
+            </div>
+
+            <div class="col-md-8">
+              <div class="mb-3">
+                <label for="exampleInput1" class="form-label">First Name</label>
+                <input type="text" name="pfirstname" class="form-control" id="exampleInput1" style="max-width: 500px;" placeholder="<?php echo "$pfirstname";?>" />
+                
+              </div>
+              <div class="mb-3">
+                <label for="exampleInput1" class="form-label">Last name</label>
+                <input type="text" name="plastname" class="form-control" id="exampleInput1" style="max-width: 500px;" />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInput1" class="form-label">Acadamic Status</label>
+
+                <!-- Default radio -->
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="pacadamic" value="ARA" id="flexRadioDefault1" />
+                  <label class="form-check-label" for="flexRadioDefault1"> ARA </label>
+                </div>
+
+                <!-- Default checked radio -->
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="pacadamic"  value="MSC"id="flexRadioDefault2" checked />
+                  <label class="form-check-label" for="flexRadioDefault2">MSc </label>
+                </div>
+
+              </div>
+              <div class="mb-3">
+                <label for="exampleInput1" class="form-label">Sex</label>
+
+                <!-- Default radio -->
+
+                <input type="radio" class="btn-check" name="psex" id="option1"  value="male" autocomplete="off" checked />
+                <label class="btn btn-primary" for="option1">Male</label>
+
+                <input type="radio" class="btn-check" name="psex" id="option2"  value="female" autocomplete="off" />
+                <label class="btn btn-danger" for="option2">Female</label>
+
+
+
+              </div>
+              <div class="mb-3">
+                <label for="exampleInput2" class="form-label">Email address</label>
+                <input type="email" name="pemail" class="form-control" id="exampleInput2" style="max-width: 500px;"  />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInput2" class="form-label">College</label>
+                <input type="text" name="pcollege" class="form-control" id="exampleInput2" style="max-width: 500px;" />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInput2" class="form-label">Department</label>
+                <input type="text" name="pdepartment" class="form-control" id="exampleInput2" style="max-width: 500px;" />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInput1" class="form-label">Scholarship Award</label>
+
+                <!-- Default radio -->
+
+
+                <!-- Default checked radio -->
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="pscholar" id="flexRadioDefault2" checked />
+                  <label class="form-check-label" for="flexRadioDefault2">MSc </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="pscholar" id="flexRadioDefault2" checked />
+                  <label class="form-check-label" for="flexRadioDefault2">PHD </label>
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInput3" class="form-label">Phone number</label>
+                  <input type="tel" class="form-control" name="pphone" id="exampleInput3" style="max-width: 300px;" />
+                </div>
+
+              </div>
+            </div>
+
+            <hr class="my-5" />
+            <div class="row gx-xl-5">
+              <div class="col-md-4">
+                <h5>Guarnatee Infromation</h5>
+                <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam et ducimus velit, facere quaerat debitis modi asperiores aspernatur corrupti, sit aliquam.</p>
+              </div>
+
+              <div class="col-md-8">
+                <div class="mb-3">
+                  <label for="exampleInput1" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="exampleInput1" name="gfirstname"style="max-width: 500px;"  />
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInput1" class="form-label">Last name</label>
+                  <input type="text" class="form-control" id="exampleInput1" name="glastname"style="max-width: 500px;" />
+                </div>
+
+                <div class="mb-3">
+                  <label for="exampleInput1" class="form-label">Sex</label>
+
+                  <!-- Default radio -->
+
+                  <input type="radio" class="btn-check" name="gsex"  value="male"  autocomplete="off" />
+                  <label class="btn btn-primary" >Male</label>
+
+                  <input type="radio" class="btn-check" name="gsex"  value="female" autocomplete="off" />
+                  <label class="btn btn-danger" >Female</label>
+
+
+
+                </div>
+                <div class="mb-3">
+                  <label for="exampleInput2" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="exampleInput2" name="gemail"style="max-width: 500px;" />
                 </div>
 
 
-                <!-- ============================================================== -->
-                <!-- Tables -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12">
-                        <div class="white-box">
-                            <div class="d-md-flex mb-3">
-                                <h3 class="box-title mb-0">Full information</h3>
-                                <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
-                                    <select class="form-select shadow-none row border-top">
-                                        <option>March 2021</option>
-                                        <option>April 2021</option>
-                                        <option>May 2021</option>
-                                        <option>June 2021</option>
-                                        <option>July 2021</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table no-wrap">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-top-0">#</th>
-                                            <th class="border-top-0">First Name</th>
-                                            <th class="border-top-0">Last Name</th>
-                                            <th class="border-top-0">Awarded</th>
-                                            <th class="border-top-0">Starting Date</th>
-                                            <th class="border-top-0">Ending Date</th>
-                                            <th class="border-top-0">Countdown</th>
-                                            <th class="border-top-0">Email</th>
-                                            <th class="border-top-0">Contract file</th>
-                                            <th class="border-top-0">Action</th>
 
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        <?php
-                                        $sql = "SELECT userid,firstname,lastname,email,award,college  FROM personal";
-                                        $sql2 = "SELECT userid,sdate,edate,pdf FROM contract";
-                                        $result = mysqli_query($conn, $sql);
-                                        $result2 = mysqli_query($conn, $sql2);
-
-                                        if (mysqli_num_rows($result) > 0) {
-                                            // output data of each row
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                while ($row2 = mysqli_fetch_assoc($result2)) {
-
-                                                    $datetime1 = strtotime(date("Y-m-d"));
-                                                    $datetime2 = strtotime($row2["edate"]);
-
-                                                    $secs = $datetime2 - $datetime1; // == <seconds between the two times>
-                                                    $days = $secs / 86400;
-                                                    if($days==0){
-                                                        $days="Expired";
-                                                    }else{
-                                                        $days=$days."<span> days left</span>";
-                                                    }
-                                        ?>
-
-
-                                                    <tr>
-                                                        <td><?=$row2["userid"]?></td>
-                                                        <td class="txt-oflo"><?= $row["firstname"] ?></td>
-                                                        <td><?= $row["lastname"] ?></td>
-                                                        <td class="txt-oflo"><?= $row["award"] ?></td>
-                                                        <td><span class="text-success"><?= $row2["sdate"] ?></span></td>
-                                                        <td><span class="text-success"><?= $row2["edate"] ?></span></td>
-                                                        <td><span class="text-success"><?= $days?></span></td>
-                                                        <td><span class="text-success"><?= $row["email"] ?></span></td>
-                                                        <td><span class="text-success"><a href="../<?= $row2["pdf"] ?> " target="_blank">PDF</a></span></td>
-                                                        <td><button class="button-30" role="button" style="background-color:blue;color:white;">
-                                                        <i class="fas fa-edit"></i>
-                                                        Edit</button>
-                                                            <button class="button-30" role="button" style="background-color:red;color:white;">
-                                                            <i class="fa fa-trash"></i>
-                                                            <a name="delete" href="dashboard.php?delete=<?php echo $row2['userid'];?>">
-                                                            Delete</a>
-                                                        </button>
-                                                            <button class="button-30" role="button" style="background-color:green;color:white;">Renewal</button>
-                                                        </td>
-                                                    </tr>
-
-                                        <?php
-                                                }
-                                            }
-                                        }
-
-                                        ?>
-
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+                <div class="mb-3">
+                  <label for="exampleInput3" class="form-label">Phone number</label>
+                  <input type="tel" class="form-control" id="exampleInput3" name="gphone"style="max-width: 300px;" />
                 </div>
+
+              </div>
+            </div>
+
+          </div>
+
+          <hr class="my-5" />
+
+
+          <div class="row gx-xl-5">
+            <div class="col-md-4">
+              <h5>University Information</h5>
+              <p class="text-muted">Fill the full university information Nam et ducimus velit, facere quaerat debitis modi asperiores aspernatur corrupti, sit aliquam.</p>
+            </div>
+
+            <div class="col-md-8">
+              <div class="mb-3">
+                <label for="exampleInput1" class="form-label">University Name</label>
+                <input type="text" name="uniname" class="form-control" id="exampleInput1" style="max-width: 500px;" />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInput1" class="form-label">Country</label>
+                <input type="text" name="unicountry" class="form-control" id="exampleInput1" style="max-width: 500px;" />
+              </div>
+
+
+              <div class="mb-3">
+                <label for="exampleInput2" class="form-label">Email address</label>
+                <input type="email"  name="uniemail"class="form-control" id="exampleInput2" style="max-width: 500px;" />
+              </div>
+
+            </div>
+          </div>
+
+          <hr class="my-5" />
+
+          <div class="row gx-xl-5">
+            <div class="col-md-4">
+              <h5>Contract Agreement</h5>
+              <p class="text-muted">Contract Agreement full information Nam et ducimus velit, facere quaerat debitis modi asperiores aspernatur corrupti, sit aliquam.</p>
+            </div>
+
+            <div class="col-md-8">
+              <div class="mb-3">
+                <label for="exampleInput1" class="form-label">Starting date</label>
+                <input type="date" class="sdate" id="exampleInput1" style="max-width: 500px;" />
+              </div>
+              <div class="mb-3">
+                <label for="exampleInput1" class="form-label">End date</label>
+                <input type="date" class="edate" id="exampleInput1" style="max-width: 500px;" placeholder="<?php echo "$edate";?>" />
+                <?php echo "$edate";?>
+              </div>
+
+
+              <div class="mb-3">
+                <label for="exampleInput2" class="form-label">Contarct In PDF format</label>
+                <input type="file" class="pfile" name="fileToUpload" id="exampleInput2" style="max-width: 500px;" />
+              </div>
+
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- Card footer -->
+    <div class="card-footer text-end py-4 px-5 bg-light border-0">
+      <button class="btn btn-link btn-rounded" data-ripple-color="primary">Cancel</button>
+      <button type="submit" class="btn btn-primary btn-rounded" name="submit">
+        Update
+      </button>
+    </div>
+    </form>
+  </div>
+  </div>
+  <!-- End your project here-->
+
+  <!-- MDB -->
+  
+
                 <!-- ============================================================== -->
 
                 <!-- ============================================================== -->
@@ -424,6 +538,10 @@ if (mysqli_multi_query($conn, $sql)) {
         <!-- End Wrapper -->
         <!-- ============================================================== -->
         <!-- ============================================================== -->
+
+        <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Custom scripts -->
+  <script type="text/javascript"></script>
         <!-- All Jquery -->
         <!-- ============================================================== -->
         <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>

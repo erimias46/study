@@ -21,9 +21,9 @@ if (isset($_GET['delete'])) {
 
 
 $sql = "DELETE FROM `personal` WHERE userid='$id';";
-$sql.= "DELETE FROM `personal` WHERE userid='$id';";
-$sql.= "DELETE FROM `personal` WHERE userid='$id';";
-$sql.= "DELETE FROM `personal` WHERE userid='$id'";
+$sql.= "DELETE FROM `guarantee` WHERE userid='$id';";
+$sql.= "DELETE FROM `university` WHERE userid='$id';";
+$sql.= "DELETE FROM `contract` WHERE userid='$id'";
 
 if (mysqli_multi_query($conn, $sql)) {
   echo "Record deleted successfully";
@@ -31,6 +31,45 @@ if (mysqli_multi_query($conn, $sql)) {
   echo "Error deleting record: " . mysqli_error($conn);
 }
 
+header('location:dashboard.php');
+
+}
+
+if (isset($_GET['renewal'])) {
+    $id = $_GET['renewal'];
+
+    $update = true;
+
+
+    $sql = "SELECT * FROM contract WHERE userid='$id'";
+    $result = mysqli_query($conn, $sql);
+    
+    if (mysqli_num_rows($result) > 0) {
+      
+      while($row = mysqli_fetch_assoc($result)) {
+       
+        $edate=$row['edate'];
+      }
+    } else {
+      echo "0 results";
+    }
+}
+
+if (isset($_POST['update'])) {
+
+    $id = $_GET['renewal'];
+    
+    $redate=date('Y-m-d',strtotime($_POST['redate']));
+
+    $sql = "UPDATE contract SET edate ='$redate'  WHERE userid='$id'";
+
+    
+
+    if (mysqli_query($conn, $sql)) {
+    
+    } else {
+    echo "Error updating record: " . mysqli_error($conn);
+    }
 }
 
 
@@ -342,23 +381,22 @@ if (mysqli_multi_query($conn, $sql)) {
                                     <tbody>
 
                                         <?php
-                                        $sql = "SELECT userid,firstname,lastname,email,award,college  FROM personal";
-                                        $sql2 = "SELECT userid,sdate,edate,pdf FROM contract";
+                                        $sql = "SELECT firstname,lastname,email,lastname,pdf,sdate,edate,award,personal.userid from personal JOIN contract ON personal.userid=contract.userid;";
+                                       
                                         $result = mysqli_query($conn, $sql);
-                                        $result2 = mysqli_query($conn, $sql2);
+                                       
 
-                                        if (mysqli_num_rows($result) > 0) {
-                                            // output data of each row
+                                        
                                             while ($row = mysqli_fetch_assoc($result)) {
-                                                while ($row2 = mysqli_fetch_assoc($result2)) {
+                                               
 
                                                     $datetime1 = strtotime(date("Y-m-d"));
-                                                    $datetime2 = strtotime($row2["edate"]);
+                                                    $datetime2 = strtotime($row["edate"]);
 
                                                     $secs = $datetime2 - $datetime1; // == <seconds between the two times>
                                                     $days = $secs / 86400;
-                                                    if($days==0){
-                                                        $days="Expired";
+                                                    if($days<=0){
+                                                        $days='<span class="text-danger">Expired</span>';
                                                     }else{
                                                         $days=$days."<span> days left</span>";
                                                     }
@@ -366,31 +404,36 @@ if (mysqli_multi_query($conn, $sql)) {
 
 
                                                     <tr>
-                                                        <td><?=$row2["userid"]?></td>
+                                                        <td><?=$row["userid"]?></td>
                                                         <td class="txt-oflo"><?= $row["firstname"] ?></td>
                                                         <td><?= $row["lastname"] ?></td>
                                                         <td class="txt-oflo"><?= $row["award"] ?></td>
-                                                        <td><span class="text-success"><?= $row2["sdate"] ?></span></td>
-                                                        <td><span class="text-success"><?= $row2["edate"] ?></span></td>
+                                                        <td><span class="text-success"><?= $row["sdate"] ?></span></td>
+                                                        <td><span class="text-success"><?= $row["edate"] ?></span></td>
                                                         <td><span class="text-success"><?= $days?></span></td>
                                                         <td><span class="text-success"><?= $row["email"] ?></span></td>
-                                                        <td><span class="text-success"><a href="../<?= $row2["pdf"] ?> " target="_blank">PDF</a></span></td>
+                                                        <td><span class="text-success"><a href="../<?= $row["pdf"] ?> " target="_blank">PDF</a></span></td>
                                                         <td><button class="button-30" role="button" style="background-color:blue;color:white;">
                                                         <i class="fas fa-edit"></i>
-                                                        Edit</button>
+                                                        <a name="edits" href="update.php?edit=<?php echo $row['userid'];?>">
+                                                            Edit</button></a>
                                                             <button class="button-30" role="button" style="background-color:red;color:white;">
                                                             <i class="fa fa-trash"></i>
-                                                            <a name="delete" href="dashboard.php?delete=<?php echo $row2['userid'];?>">
+                                                            <a name="delete" href="dashboard.php?delete=<?php echo $row['userid'];?>">
                                                             Delete</a>
                                                         </button>
-                                                            <button class="button-30" role="button" style="background-color:green;color:white;">Renewal</button>
+                                                        
+                                                            <button class="button-30" role="button" style="background-color:green;color:white;">
+                                                            <a name="edit" href="dashboard.php?renewal=<?php echo $row['userid']; ?>"> Renewal </a>
+                                                        </button>
                                                         </td>
                                                     </tr>
 
                                         <?php
                                                 }
-                                            }
-                                        }
+                                            
+                                        
+                                    
 
                                         ?>
 
@@ -402,7 +445,28 @@ if (mysqli_multi_query($conn, $sql)) {
                     </div>
                 </div>
                 <!-- ============================================================== -->
+                <div class="col-lg-4 col-md-12">
+                        <div class="white-box analytics-info">
+                            <h3 class="box-title">Renewal</h3>
+                            <ul >
+                                <form action="" method="post" enctype="multipart/form-data">
+                                    <div ><label for="">Renewal End date</label>
+                                    <?php if(isset($edate))echo $edate;?>
+                                    <span ><input type="date" name="redate"> </span>
+                                
+                                    <label for="">Renewal Contract PDF</label>
+                                    
+                                
+                                
+                                <span ><input type="file"> </span>
 
+                                <span ><button class="button-30"  type="submit" name="update" role="button" style="background-color:green;color:white;">
+                                        UPDATE 
+                                </button></span></li>
+                                </form>
+                            </ul>
+                        </div>
+                    </div>         
                 <!-- ============================================================== -->
                 <!-- End Container fluid  -->
                 <!-- ============================================================== -->

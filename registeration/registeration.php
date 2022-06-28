@@ -22,6 +22,7 @@ if(isset($_POST['submit'])){
   $pdepartment=$_POST['pdepartment'];
   $pscholar=$_POST['pscholar'];
   $pphone=$_POST['pphone'];
+  $paward=$_POST['paward'];
 
   $gfirstname=$_POST['gfirstname'];
   $glastname=$_POST['glastname'];
@@ -113,7 +114,7 @@ if(isset($_POST['submit'])){
    
 
 
-        $sql ="INSERT INTO personal (userid,firstname, lastname, email ,acadamic,sex, college,department,award) VALUES ('$userid','$pfirstname', '$plastname', '$pemail','$pacadamic','$psex','$pcollege','$pdepartement','$paward');";
+        $sql ="INSERT INTO personal (userid,firstname, lastname, email ,acadamic,sex, college,department,award) VALUES ('$userid','$pfirstname', '$plastname', '$pemail','$pacadamic','$psex','$pcollege','$pdepartment','$paward');";
         $sql.="INSERT INTO guarantee (userid,firstname, lastname,sex,email,phone) VALUES ('$userid','$gfirstname', '$glastname','$gsex', '$gemail','$gphone');";
         $sql.="INSERT INTO university (userid,uniname,unicountry,uniemail) VALUES ('$userid','$uniname', '$unicountry','$uniemail');";
         $sql.="INSERT INTO contract (userid,sdate,edate,pdf) VALUES ('$userid','$sdate', '$edate','$target_file')";
@@ -329,11 +330,11 @@ if(isset($_POST['submit'])){
             <div class="col-md-8">
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">Starting date</label>
-                <input type="date" class="sdate" id="exampleInput1" style="max-width: 500px;" />
+                <input type="date" class="sdate" name="sdate" id="exampleInput1" style="max-width: 500px;" />
               </div>
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">End date</label>
-                <input type="date" class="edate" id="exampleInput1" style="max-width: 500px;" />
+                <input type="date" class="edate" name="edate" id="exampleInput1" style="max-width: 500px;" />
               </div>
 
 
