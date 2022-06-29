@@ -78,6 +78,129 @@ $pdf=$row4['pdf'];
 
 }
 
+if(isset($_POST['update'])){
+
+
+  $pfirstname=$_POST['pfirstname'];
+  $plastname=$_POST['plastname'];
+  $pacadamic=$_POST['pacadamic'];
+  $psex=$_POST['psex'];
+  $pemail=$_POST['pemail'];
+  $pcollege=$_POST['pcollege'];
+  $pdepartment=$_POST['pdepartment'];
+  $pscholar=$_POST['pscholar'];
+  $pphone=$_POST['pphone'];
+  $paward=$_POST['paward'];
+
+  $gfirstname=$_POST['gfirstname'];
+  $glastname=$_POST['glastname'];
+  $gemail=$_POST['gemail'];
+  $gsex=$_POST['gsex'];
+  $gphone=$_POST['gphone'];
+
+
+  $uniname=$_POST['uniname'];
+  $unicountry=$_POST['unicountry'];
+  $uniemail=$_POST['uniemail'];
+
+
+  $sdate=date('Y-m-d',strtotime($_POST['sdate']));
+  $edate=date('Y-m-d',strtotime($_POST['edate']));
+ // $pfile=$_POST['pfile'];
+
+
+
+    
+
+ //////
+
+
+
+ $target_dir = "registeration/uploads/";
+ $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+ $uploadOk = 1;
+ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+ 
+ // Check if image file is a actual image or fake image
+ if(isset($_POST["submit"])) {
+   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+   if($check !== false) {
+     echo "File is an image - " . $check["mime"] . ".";
+     $uploadOk = 1;
+   } else {
+     echo "File is not an image.";
+     $uploadOk = 0;
+   }
+ }
+ 
+ // Check if file already exists
+ if (file_exists($target_file)) {
+   echo "Sorry, file already exists.";
+   $uploadOk = 0;
+ }
+ 
+ // Check file size
+ if ($_FILES["fileToUpload"]["size"] > 103500000) {
+   echo "Sorry, your file is too large.";
+   $uploadOk = 0;
+ }
+ 
+ // Allow certain file formats
+ if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+ && $imageFileType != "gif" ) {
+   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+   $uploadOk = 0;
+ }
+ 
+ // Check if $uploadOk is set to 0 by an error
+ if ($uploadOk == 0) {
+   echo "Sorry, your file was not uploaded.";
+ // if everything is ok, try to upload file
+ } else {
+   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+     echo "The file ". htmlspecialchars( basename( $_FILES["fileToUpload"]["name"])). " has been uploaded.";
+   } else {
+     echo "Sorry, there was an error uploading your file.";
+   }
+ }
+
+
+
+
+
+
+
+
+ 
+   
+    // random unique id generator 
+    //$userid=uniqid(100000,true);
+ 
+   
+ 
+    // Now let's move the uploaded image into the folder: image
+    
+
+        $sql="UPDATE personal set firstname='$pfirstname',lastname='$plastname',email='$pemail',acadamic='$pacadamic', sex='$psex',college='$pcollege',department='$pdepartment',$award='$paward' WHERE userid='$id';";
+        $sql.="UPDATE guarantee set firstname='$gfirstname',lastname='$glastname',email='$gemail',sex='$gsex',email='$gemail',phone='$gphone'";
+        
+        $sql.="UPDATE university set uniname='$uniname', unicountry='$unicountry',uniemail='$uniemail' where userid='$id';";
+        $sql.="UPDATE contract set sdate='$sdate', edate='$edate',pdf=$'pdf' where userid='$id'";
+        
+        if (mysqli_multi_query($conn, $sql)) {
+            echo "Record Updated successfully";
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+       
+
+        mysqli_close($conn);
+    
+}
+
+
+
+
 ?>
 
 
@@ -503,7 +626,7 @@ $pdf=$row4['pdf'];
     <!-- Card footer -->
     <div class="card-footer text-end py-4 px-5 bg-light border-0">
       <button class="btn btn-link btn-rounded" data-ripple-color="primary">Cancel</button>
-      <button type="submit" class="btn btn-primary btn-rounded" name="submit">
+      <button type="submit" class="btn btn-primary btn-rounded" name="update">
         Update
       </button>
     </div>
