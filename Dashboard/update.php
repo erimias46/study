@@ -106,13 +106,6 @@ if(isset($_POST['update'])){
 
   $sdate=date('Y-m-d',strtotime($_POST['sdate']));
   $edate=date('Y-m-d',strtotime($_POST['edate']));
- // $pfile=$_POST['pfile'];
-
-
-
-    
-
- //////
 
 
 
@@ -166,21 +159,6 @@ if(isset($_POST['update'])){
 
 
 
-
-
-
-
-
- 
-   
-    // random unique id generator 
-    //$userid=uniqid(100000,true);
- 
-   
- 
-    // Now let's move the uploaded image into the folder: image
-    
-
         $sql="UPDATE personal set firstname='$pfirstname',lastname='$plastname',email='$pemail',acadamic='$pacadamic', sex='$psex',college='$pcollege',department='$pdepartment',$award='$paward' WHERE userid='$id';";
         $sql.="UPDATE guarantee set firstname='$gfirstname',lastname='$glastname',email='$gemail',sex='$gsex',email='$gemail',phone='$gphone'";
         
@@ -194,7 +172,7 @@ if(isset($_POST['update'])){
         }
        
 
-        mysqli_close($conn);
+       
     
 }
 
