@@ -31,7 +31,7 @@ if (isset($_GET['edit'])) {
   $pemail=$row['email'];
   $pcollege=$row['college'];
   $pdepartment=$row['department'];
-  $pscholar=$row['scholar'];
+  #$pscholar=$row['scholar'];
   $pphone=$row['phone'];
   $paward=$row['award'];
 
@@ -91,7 +91,7 @@ if(isset($_POST['update'])){
   $pscholar=$_POST['pscholar'];
   $pphone=$_POST['pphone'];
   $paward=$_POST['paward'];
-  $pphone=$_POST['pphone'];
+  
 
   $gfirstname=$_POST['gfirstname'];
   $glastname=$_POST['glastname'];
@@ -510,16 +510,16 @@ if(isset($_POST['update'])){
               <div class="col-md-8">
                 <div class="mb-3">
                   <label for="exampleInput1" class="form-label">First Name</label>
-                  <input type="text" class="form-control" id="exampleInput1" name="gfirstname"style="max-width: 500px;"  />
+                  <input type="text" class="form-control" id="exampleInput1" name="gfirstname"style="max-width: 500px;" value="<?php echo $gfirstname?>" />
                 </div>
                 <div class="mb-3">
                   <label for="exampleInput1" class="form-label">Last name</label>
-                  <input type="text" class="form-control" id="exampleInput1" name="glastname"style="max-width: 500px;" />
+                  <input type="text" class="form-control" id="exampleInput1" name="glastname"style="max-width: 500px;" value="<?php echo $glastname?>" />
                 </div>
 
                 <div class="mb-3">
                   <label for="exampleInput1" class="form-label">Sex</label>
-
+                  <label for="" style="color:red;">Choosen <?php echo $gsex ?></label> 
                   <!-- Default radio -->
 
                   <input type="radio" class="btn-check" name="gsex"  value="male"  autocomplete="off" />
@@ -533,14 +533,14 @@ if(isset($_POST['update'])){
                 </div>
                 <div class="mb-3">
                   <label for="exampleInput2" class="form-label">Email address</label>
-                  <input type="email" class="form-control" id="exampleInput2" name="gemail"style="max-width: 500px;" />
+                  <input type="email" class="form-control" id="exampleInput2" name="gemail"style="max-width: 500px;" value="<?php echo $gemail?>" />
                 </div>
 
 
 
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label">Phone number</label>
-                  <input type="tel" class="form-control" id="exampleInput3" name="gphone"style="max-width: 300px;" />
+                  <input type="tel" class="form-control" id="exampleInput3" name="gphone"style="max-width: 300px;"  value="<?php echo $gphone?>"/>
                 </div>
 
               </div>
@@ -560,17 +560,17 @@ if(isset($_POST['update'])){
             <div class="col-md-8">
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">University Name</label>
-                <input type="text" name="uniname" class="form-control" id="exampleInput1" style="max-width: 500px;" />
+                <input type="text" name="uniname" class="form-control" id="exampleInput1" style="max-width: 500px;" value="<?php echo $uniname?>"/>
               </div>
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">Country</label>
-                <input type="text" name="unicountry" class="form-control" id="exampleInput1" style="max-width: 500px;" />
+                <input type="text" name="unicountry" class="form-control" id="exampleInput1" style="max-width: 500px;"value="<?php echo $unicountry?>" />
               </div>
 
 
               <div class="mb-3">
                 <label for="exampleInput2" class="form-label">Email address</label>
-                <input type="email"  name="uniemail"class="form-control" id="exampleInput2" style="max-width: 500px;" />
+                <input type="email"  name="uniemail"class="form-control" id="exampleInput2" style="max-width: 500px;" value="<?php echo $uniemail?>"/>
               </div>
 
             </div>
@@ -587,18 +587,18 @@ if(isset($_POST['update'])){
             <div class="col-md-8">
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">Starting date</label>
-                <input type="date" class="sdate" id="exampleInput1" style="max-width: 500px;" />
+                <input type="date" class="sdate" id="exampleInput1" style="max-width: 500px;"value="<?php echo $sdate?>" />
               </div>
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">End date</label>
-                <input type="date" class="edate" id="exampleInput1" style="max-width: 500px;" placeholder="<?php echo "$edate";?>" />
-                <?php echo "$edate";?>
+                <input type="date" class="edate" id="exampleInput1" style="max-width: 500px;" value="<?php echo "$edate";?>" />
+                
               </div>
 
 
               <div class="mb-3">
                 <label for="exampleInput2" class="form-label">Contarct In PDF format</label>
-                <input type="file" class="pfile" name="fileToUpload" id="exampleInput2" style="max-width: 500px;" />
+                <input type="file" class="pfile" name="fileToUpload" id="exampleInput2" style="max-width: 500px;" value="<?php echo $pdf?>" />
               </div>
 
             </div>
