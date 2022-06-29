@@ -386,7 +386,7 @@ if (isset($_POST['update'])) {
                                         $result = mysqli_query($conn, $sql);
                                        
 
-                                        
+                                        $v=1;
                                             while ($row = mysqli_fetch_assoc($result)) {
                                                
 
@@ -404,7 +404,7 @@ if (isset($_POST['update'])) {
 
 
                                                     <tr>
-                                                        <td><?=$row["userid"]?></td>
+                                                        <td><?php echo $v; $v++;?></td>
                                                         <td class="txt-oflo"><?= $row["firstname"] ?></td>
                                                         <td><?= $row["lastname"] ?></td>
                                                         <td class="txt-oflo"><?= $row["award"] ?></td>

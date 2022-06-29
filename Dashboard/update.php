@@ -88,7 +88,7 @@ if(isset($_POST['update'])){
   $pemail=$_POST['pemail'];
   $pcollege=$_POST['pcollege'];
   $pdepartment=$_POST['pdepartment'];
-  $pscholar=$_POST['pscholar'];
+  #$pscholar=$_POST['pscholar'];
   $pphone=$_POST['pphone'];
   $paward=$_POST['paward'];
   
@@ -110,7 +110,7 @@ if(isset($_POST['update'])){
 
 
 
- $target_dir = "registeration/uploads/";
+ $target_dir = "../registeration/uploads/";
  $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
  $uploadOk = 1;
  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -157,14 +157,16 @@ if(isset($_POST['update'])){
      echo "Sorry, there was an error uploading your file.";
    }
  }
+$target_dir1="registeration/uploads/";
+ $target_file1 = $target_dir1 . basename($_FILES["fileToUpload"]["name"]);
+ 
 
 
-
-        $sql="UPDATE personal set firstname='$pfirstname',lastname='$plastname',email='$pemail',acadamic='$pacadamic', sex='$psex',college='$pcollege',department='$pdepartment',$award='$paward' WHERE userid='$id';";
-        $sql.="UPDATE guarantee set firstname='$gfirstname',lastname='$glastname',email='$gemail',sex='$gsex',email='$gemail',phone='$gphone'";
+        $sql="UPDATE personal set firstname='$pfirstname',lastname='$plastname',email='$pemail',acadamic='$pacadamic', sex='$psex',college='$pcollege',department='$pdepartment',award='$paward' WHERE userid='$id';";
+        $sql.="UPDATE guarantee set firstname='$gfirstname',lastname='$glastname',email='$gemail',sex='$gsex',email='$gemail',phone='$gphone';";
         
         $sql.="UPDATE university set uniname='$uniname', unicountry='$unicountry',uniemail='$uniemail' where userid='$id';";
-        $sql.="UPDATE contract set sdate='$sdate', edate='$edate',pdf=$'pdf' where userid='$id'";
+        $sql.="UPDATE contract set sdate='$sdate', edate='$edate',pdf='$target_file1' where userid='$id'";
         
         if (mysqli_multi_query($conn, $sql)) {
             echo "Record Updated successfully";
@@ -484,11 +486,11 @@ if(isset($_POST['update'])){
 
                 <!-- Default checked radio -->
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="pscholar" id="flexRadioDefault2" checked />
+                  <input class="form-check-input" type="radio" name="paward" id="flexRadioDefault2" checked />
                   <label class="form-check-label" for="flexRadioDefault2">MSc </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="pscholar" id="flexRadioDefault2" checked />
+                  <input class="form-check-input" type="radio" name="paward" id="flexRadioDefault2" checked />
                   <label class="form-check-label" for="flexRadioDefault2">PHD </label>
                 </div>
                 <label for="" style="color:green;">Choosen</label> <?php echo $paward ?>
@@ -522,11 +524,11 @@ if(isset($_POST['update'])){
                   <label for="" style="color:red;">Choosen <?php echo $gsex ?></label> 
                   <!-- Default radio -->
 
-                  <input type="radio" class="btn-check" name="gsex"  value="male"  autocomplete="off" />
-                  <label class="btn btn-primary" >Male</label>
+                  <input type="radio" class="btn-check" name="gsex"  id="option4" value="male"  autocomplete="off"  checked/>
+                  <label class="btn btn-primary" for="option4" >Male</label>
 
-                  <input type="radio" class="btn-check" name="gsex"  value="female" autocomplete="off" />
-                  <label class="btn btn-danger" >Female</label>
+                  <input type="radio" class="btn-check" name="gsex"   id="option5" value="female" autocomplete="off" />
+                  <label class="btn btn-danger" for="option5">Female</label>
 
 
 
@@ -587,11 +589,11 @@ if(isset($_POST['update'])){
             <div class="col-md-8">
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">Starting date</label>
-                <input type="date" class="sdate" id="exampleInput1" style="max-width: 500px;"value="<?php echo $sdate?>" />
+                <input type="date" class="sdate" name="sdate" id="exampleInput1" style="max-width: 500px;"value="<?php echo $sdate?>" />
               </div>
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">End date</label>
-                <input type="date" class="edate" id="exampleInput1" style="max-width: 500px;" value="<?php echo "$edate";?>" />
+                <input type="date" class="edate" name="edate" id="exampleInput1" style="max-width: 500px;" value="<?php echo "$edate";?>" />
                 
               </div>
 
