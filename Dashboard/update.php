@@ -31,8 +31,8 @@ if (isset($_GET['edit'])) {
   $pemail=$row['email'];
   $pcollege=$row['college'];
   $pdepartment=$row['department'];
-  #$pscholar=$row['scholar'];
-  #$pphone=$row['phone'];
+  $pscholar=$row['scholar'];
+  $pphone=$row['phone'];
   $paward=$row['award'];
 
  }
@@ -91,6 +91,7 @@ if(isset($_POST['update'])){
   $pscholar=$_POST['pscholar'];
   $pphone=$_POST['pphone'];
   $paward=$_POST['paward'];
+  $pphone=$_POST['pphone'];
 
   $gfirstname=$_POST['gfirstname'];
   $glastname=$_POST['glastname'];
@@ -423,16 +424,18 @@ if(isset($_POST['update'])){
             <div class="col-md-8">
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">First Name</label>
-                <input type="text" name="pfirstname" class="form-control" id="exampleInput1" style="max-width: 500px;" placeholder="<?php echo "$pfirstname";?>" />
+                <input type="text" name="pfirstname" class="form-control" id="exampleInput1" style="max-width: 500px;"  value="<?php echo $pfirstname ?>" />
                 
               </div>
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">Last name</label>
-                <input type="text" name="plastname" class="form-control" id="exampleInput1" style="max-width: 500px;" />
+                <input type="text" name="plastname" class="form-control" id="exampleInput1" style="max-width: 500px;" value="<?php echo $plastname ?>" />
               </div>
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">Acadamic Status</label>
-
+                <br>
+                <label for="" style="color:green;">Choosen</label> <?php echo $pacadamic ?>
+                
                 <!-- Default radio -->
                 <div class="form-check">
                   <input class="form-check-input" type="radio" name="pacadamic" value="ARA" id="flexRadioDefault1" />
@@ -460,17 +463,18 @@ if(isset($_POST['update'])){
 
 
               </div>
+              <label for="" style="color:green;">Choosen</label> <?php echo $psex ?>
               <div class="mb-3">
                 <label for="exampleInput2" class="form-label">Email address</label>
-                <input type="email" name="pemail" class="form-control" id="exampleInput2" style="max-width: 500px;"  />
+                <input type="email" name="pemail" class="form-control" id="exampleInput2" style="max-width: 500px;" value="<?php echo $pemail?>" />
               </div>
               <div class="mb-3">
                 <label for="exampleInput2" class="form-label">College</label>
-                <input type="text" name="pcollege" class="form-control" id="exampleInput2" style="max-width: 500px;" />
+                <input type="text" name="pcollege" class="form-control" id="exampleInput2" style="max-width: 500px;"  value="<?php echo $pcollege?>"/>
               </div>
               <div class="mb-3">
                 <label for="exampleInput2" class="form-label">Department</label>
-                <input type="text" name="pdepartment" class="form-control" id="exampleInput2" style="max-width: 500px;" />
+                <input type="text" name="pdepartment" class="form-control" id="exampleInput2" style="max-width: 500px;" value="<?php echo $pdepartment?>" />
               </div>
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">Scholarship Award</label>
@@ -487,9 +491,10 @@ if(isset($_POST['update'])){
                   <input class="form-check-input" type="radio" name="pscholar" id="flexRadioDefault2" checked />
                   <label class="form-check-label" for="flexRadioDefault2">PHD </label>
                 </div>
+                <label for="" style="color:green;">Choosen</label> <?php echo $paward ?>
                 <div class="mb-3">
                   <label for="exampleInput3" class="form-label">Phone number</label>
-                  <input type="tel" class="form-control" name="pphone" id="exampleInput3" style="max-width: 300px;" />
+                  <input type="tel" class="form-control" name="pphone" id="exampleInput3" style="max-width: 300px;" value="<?php echo $pphone?>" />
                 </div>
 
               </div>
