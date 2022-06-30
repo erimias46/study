@@ -13,6 +13,22 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
+$adminid=$_SESSION['adminid'];
+
+
+$sql4 = "Select * from admin where adminid='$adminid'";
+$result4= mysqli_query($conn, $sql4);
+
+  
+    while($row4= mysqli_fetch_assoc($result4)) {
+        $adminname=$row4['fullname'];
+        $level=$row4['level'];
+     
+
+        
+      
+    }
+
 
 
 if (isset($_GET['edit'])) {

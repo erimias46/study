@@ -5,6 +5,22 @@ if(!isset($_SESSION['adminid'] )and !isset($_SESSION['level']) ){
 }
 require("../conn.php");
 
+$adminid=$_SESSION['adminid'];
+
+
+$sql4 = "Select * from admin where adminid='$adminid'";
+$result4= mysqli_query($conn, $sql4);
+
+  
+    while($row4= mysqli_fetch_assoc($result4)) {
+        $adminname=$row4['fullname'];
+        $level=$row4['level'];
+     
+
+        
+      
+    }
+
 
 if (isset($_GET['view'])) {
   $id = $_GET['view'];
@@ -178,7 +194,7 @@ $pdf=$row4['pdf'];
                         <li>
                             <a class="profile-pic" href="#">
                                 <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-white font-medium">Siraye</span></a>
+                                    class="img-circle"><span class="text-white font-medium"><?php echo  $adminname; echo " Level ".$level?> </span></a>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -278,18 +294,19 @@ $pdf=$row4['pdf'];
                         <div class="col-lg-4">
                           <div class="card mb-4">
                             <div class="card-body text-center">
-                              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                              <img src="src/user.png" width="20px" height="20px" alt="avatar"
                                 class="rounded-circle img-fluid" style="width: 150px;">
-                              <h5 class="my-3"><?php echo $pfirstname?></h5>
-                              <p class="text-muted mb-1">Full Stack Developer</p>
-                              <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                              <h5 class="my-3"><?php echo ucfirst($pfirstname)." ".ucfirst($plastname)?></h5>
+                              
                               <div class="d-flex justify-content-center mb-2">
-                                <button type="button" class="btn btn-primary">Follow</button>
-                                <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+                                
+                                <a href="mailto:<?php echo $pemail?>">
+                                <button type="button" class="btn btn-primary">Send Mail</button>
+                                </a>
                               </div>
                             </div>
                           </div>
-                          <div class="card mb-4 mb-lg-0" style="margin-top:80px;min-height:250px;">
+                          <div class="card mb-4 mb-lg-0" style="margin-top:38px;min-height:250px;">
                             <div class="card-body p-0">
                               <ul class="list-group list-group-flush rounded-3">
                                 <label style="color:#3b5998;margin:5px 50px;margin-top:30px;">Guarantee information</label>
