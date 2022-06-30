@@ -454,8 +454,12 @@ if (isset($_POST['update'])) {
                                                             <button class="button-30" role="button" style="background-color:green;color:white;">
                                                             <a name="edit" href="dashboard.php?renewal=<?php echo $row['userid']; ?>"> Renewal </a>
                                                         </button>
-                                                        </td>
+                                                        
                                                         <?php }?>
+                                                        <button class="button-30" role="button" style="background-color:yellow;color:white;">
+                                                            <a name="edit" href="../info/index.php?view=<?php echo $row['userid']; ?>"> View </a>
+                                                        </button>
+                                                        </td>
                                                     </tr>
 
                                         <?php

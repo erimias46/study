@@ -1,3 +1,70 @@
+<?php
+session_start();
+if(!isset($_SESSION['adminid'] )and !isset($_SESSION['level']) ){
+  header("location: ../login/index.php");
+}
+require("../conn.php");
+
+
+if (isset($_GET['view'])) {
+  $id = $_GET['view'];
+  
+  $sql = "SELECT * from personal where userid='$id'";
+                                       
+  $result = mysqli_query($conn, $sql);
+ while ($row = mysqli_fetch_assoc($result)) {
+
+  $pfirstname=$row['firstname'];
+  $plastname=$row['lastname'];
+  $pacadamic=$row['acadamic'];
+  $psex=$row['sex'];
+  $pemail=$row['email'];
+  $pcollege=$row['college'];
+  $pdepartment=$row['department'];
+  #$pscholar=$row['scholar'];
+  $pphone=$row['phone'];
+  $paward=$row['award'];
+
+ }
+ $sql2 = "SELECT * from guarantee where userid='$id'";
+                                       
+ $result2 = mysqli_query($conn, $sql2);
+while ($row2 = mysqli_fetch_assoc($result2)) {
+
+ $gfirstname=$row2['firstname'];
+ $glastname=$row2['lastname'];
+ $gemail=$row2['email'];
+ $gsex=$row2['sex'];
+ $gphone=$row2['phone'];
+
+
+ 
+}
+
+$sql3 = "SELECT * from university where userid='$id'";
+                                       
+ $result3 = mysqli_query($conn, $sql3);
+while ($row3 = mysqli_fetch_assoc($result3)) {
+
+$uniname=$row3['uniname'];
+ $unicountry=$row3['unicountry'];
+ $uniemail=$row3['uniemail'];
+ 
+}
+
+$sql4 = "SELECT * from contract where userid='$id'";
+                                       
+ $result4 = mysqli_query($conn, $sql4);
+while ($row4 = mysqli_fetch_assoc($result4)) {
+
+$sdate=$row4['sdate'];
+$edate=$row4['edate'];
+$pdf=$row4['pdf'];
+}
+}
+
+?>
+
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -11,7 +78,7 @@
     <meta name="description"
         content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
-    <title>Ample Admin Lite Template by WrapPixel</title>
+    <title>Full Information</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="plugins/images/favicon.png">
@@ -72,7 +139,8 @@
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="plugins/images/logo-text.png" alt="homepage" />
+                            <label style="color: black;">Study Leave</label>
+                            
                         </span>
                     </a>
                     <!-- ============================================================== -->
@@ -212,7 +280,7 @@
                             <div class="card-body text-center">
                               <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                                 class="rounded-circle img-fluid" style="width: 150px;">
-                              <h5 class="my-3">John Smith</h5>
+                              <h5 class="my-3"><?php echo $pfirstname?></h5>
                               <p class="text-muted mb-1">Full Stack Developer</p>
                               <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
                               <div class="d-flex justify-content-center mb-2">
@@ -221,29 +289,28 @@
                               </div>
                             </div>
                           </div>
-                          <div class="card mb-4 mb-lg-0">
+                          <div class="card mb-4 mb-lg-0" style="margin-top:80px;min-height:250px;">
                             <div class="card-body p-0">
                               <ul class="list-group list-group-flush rounded-3">
+                                <label style="color:#3b5998;margin:5px 50px;margin-top:30px;">Guarantee information</label>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                  <i class="fas fa-globe fa-lg text-warning"></i>
-                                  <p class="mb-0">https://mdbootstrap.com</p>
+                                  <p class="mb-0">Full Name</p>
+                                  <p class="mb-0"><?php echo ucfirst($gfirstname)." ".ucfirst($glastname)?></p>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                  <i class="fab fa-github fa-lg" style="color: #333333;"></i>
-                                  <p class="mb-0">mdbootstrap</p>
+                                <p class="mb-0">Sex</p>
+                                  <p class="mb-0"><?php echo ucfirst($gsex)?></p>
+                                  
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                  <i class="fab fa-twitter fa-lg" style="color: #55acee;"></i>
-                                  <p class="mb-0">@mdbootstrap</p>
+                                <p class="mb-0">Email</p>
+                                  <p class="mb-0"><?php echo ucfirst($gemail)?></p>
                                 </li>
                                 <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                  <i class="fab fa-instagram fa-lg" style="color: #ac2bac;"></i>
-                                  <p class="mb-0">mdbootstrap</p>
+                                <p class="mb-0">Phone</p>
+                                  <p class="mb-0"><?php echo ucfirst($gphone)?></p>
                                 </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                                  <i class="fab fa-facebook-f fa-lg" style="color: #3b5998;"></i>
-                                  <p class="mb-0">mdbootstrap</p>
-                                </li>
+                                
                               </ul>
                             </div>
                           </div>
@@ -256,7 +323,7 @@
                                   <p class="mb-0">Full Name</p>
                                 </div>
                                 <div class="col-sm-9">
-                                  <p class="text-muted mb-0">Johnatan Smith</p>
+                                  <p class="text-muted mb-0"> <?php echo ucfirst($pfirstname)." ".ucfirst($plastname)?></p>
                                 </div>
                               </div>
                               <hr>
@@ -265,7 +332,7 @@
                                   <p class="mb-0">Email</p>
                                 </div>
                                 <div class="col-sm-9">
-                                  <p class="text-muted mb-0">example@example.com</p>
+                                  <p class="text-muted mb-0"><?php echo $pemail;?></p>
                                 </div>
                               </div>
                               <hr>
@@ -274,25 +341,25 @@
                                   <p class="mb-0">Phone</p>
                                 </div>
                                 <div class="col-sm-9">
-                                  <p class="text-muted mb-0">(097) 234-5678</p>
+                                  <p class="text-muted mb-0"><?php echo $pphone ?></p>
                                 </div>
                               </div>
                               <hr>
                               <div class="row">
                                 <div class="col-sm-3">
-                                  <p class="mb-0">Mobile</p>
+                                  <p class="mb-0">Sex</p>
                                 </div>
                                 <div class="col-sm-9">
-                                  <p class="text-muted mb-0">(098) 765-4321</p>
+                                  <p class="text-muted mb-0"><?php echo ucfirst($psex)?></p>
                                 </div>
                               </div>
                               <hr>
                               <div class="row">
                                 <div class="col-sm-3">
-                                  <p class="mb-0">Address</p>
+                                  <p class="mb-0">Department</p>
                                 </div>
                                 <div class="col-sm-9">
-                                  <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                                  <p class="text-muted mb-0"><?php echo $pdepartment?></p>
                                 </div>
                               </div>
                             </div>
@@ -301,68 +368,59 @@
                             <div class="col-md-6">
                               <div class="card mb-4 mb-md-0">
                                 <div class="card-body">
-                                  <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
-                                  </p>
-                                  <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                                  <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
-                                      aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                  <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                                  <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
-                                      aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                  <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                                  <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
-                                      aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                  <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                                  <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
-                                      aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                  <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                                  <div class="progress rounded mb-2" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
-                                      aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                </div>
+                                <div class="card-body p-0">
+                              <ul class="list-group list-group-flush rounded-3">
+                                <label style="color:#3b5998;margin:5px 50px;">University Information</label>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                  <p class="mb-0">Univeristy Name</p>
+                                  <p class="mb-0"><?php echo ucfirst($uniname)?></p>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <p class="mb-0">University Country</p>
+                                  <p class="mb-0"><?php echo ucfirst($unicountry)?></p>
+                                  
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <p class="mb-0">Email</p>
+                                  <p class="mb-0"><?php echo ucfirst($uniemail)?></p>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <p class="mb-0">Phone</p>
+                                  <p class="mb-0"><?php echo ucfirst($gphone)?></p>
+                                </li>
+                                
+                              </ul>
+                            </div>
+                            </div>
                               </div>
                             </div>
                             <div class="col-md-6">
                               <div class="card mb-4 mb-md-0">
                                 <div class="card-body">
-                                  <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
-                                  </p>
-                                  <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                                  <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
-                                      aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                  <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                                  <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72"
-                                      aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                  <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                                  <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89"
-                                      aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                  <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                                  <div class="progress rounded" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55"
-                                      aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                  <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                                  <div class="progress rounded mb-2" style="height: 5px;">
-                                    <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66"
-                                      aria-valuemin="0" aria-valuemax="100"></div>
-                                  </div>
-                                </div>
-                              </div>
+                                <div class="card-body p-0">
+                              <ul class="list-group list-group-flush rounded-3">
+                                <label style="color:#3b5998;margin:5px 50px;">Contract Information</label>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                  <p class="mb-0">Starting Date</p>
+                                  <p class="mb-0"><?php echo ucfirst($sdate)?></p>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <p class="mb-0">End date</p>
+                                  <p class="mb-0"><?php echo ucfirst($edate)?></p>
+                                  
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <p class="mb-0">Contract</p>
+                                  <p class="mb-0"><a href="../<?= $pdf?> " target="_blank">PDF</a></p>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                                <p class="mb-0">Phone</p>
+                                  <p class="mb-0"><?php echo ucfirst($gphone)?></p>
+                                </li>
+                                
+                              </ul>
+                            </div>
+                            </div>
                             </div>
                           </div>
                         </div>
