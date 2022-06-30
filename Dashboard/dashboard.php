@@ -1,5 +1,9 @@
 <?php
 session_start();
+
+if(!isset($_SESSION['adminid'] )and !isset($_SESSION['level']) ){
+    header("location: ../login/index.php");
+}
 $dbhost = "localhost";
 $dbname = "study";
 $dbpass = "";
@@ -12,6 +16,23 @@ $conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
+
+$adminid=$_SESSION['adminid'];
+
+
+$sql4 = "Select * from admin where adminid='$adminid'";
+$result4= mysqli_query($conn, $sql4);
+
+  
+    while($row4= mysqli_fetch_assoc($result4)) {
+        $adminname=$row4['fullname'];
+        $level=$row4['level'];
+     
+
+        
+      
+    }
+
 
 
 
@@ -218,7 +239,7 @@ if (isset($_POST['update'])) {
                         <!-- ============================================================== -->
                         <li>
                             <a class="profile-pic" href="#">
-                                <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><span class="text-white font-medium">Dr Siraye</span></a>
+                                <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><span class="text-white font-medium"><?php echo $adminname; echo " Level ".$level?></span></a>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -257,6 +278,12 @@ if (isset($_POST['update'])) {
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Basic Table</span>
                             </a>
+                        </li>
+
+                        <li class="text-center p-20 upgrade-btn">
+                            <a href="../login/logout.php"
+                                class="btn d-grid btn-danger text-white">
+                                Logout</a>
                         </li>
 
 
@@ -413,6 +440,7 @@ if (isset($_POST['update'])) {
                                                         <td><span class="text-success"><?= $days?></span></td>
                                                         <td><span class="text-success"><?= $row["email"] ?></span></td>
                                                         <td><span class="text-success"><a href="../<?= $row["pdf"] ?> " target="_blank">PDF</a></span></td>
+                                                        <?php if ($level==1){?>
                                                         <td><button class="button-30" role="button" style="background-color:blue;color:white;">
                                                         <i class="fas fa-edit"></i>
                                                         <a name="edits" href="update.php?edit=<?php echo $row['userid'];?>">
@@ -427,6 +455,7 @@ if (isset($_POST['update'])) {
                                                             <a name="edit" href="dashboard.php?renewal=<?php echo $row['userid']; ?>"> Renewal </a>
                                                         </button>
                                                         </td>
+                                                        <?php }?>
                                                     </tr>
 
                                         <?php
@@ -445,6 +474,8 @@ if (isset($_POST['update'])) {
                     </div>
                 </div>
                 <!-- ============================================================== -->
+
+                <?php if(isset($_GET['renewal'])) {?>
                 <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
                             <h3 class="box-title">Renewal</h3>
@@ -466,7 +497,9 @@ if (isset($_POST['update'])) {
                                 </form>
                             </ul>
                         </div>
-                    </div>         
+                    </div> 
+                    <?php } else{
+                        }?>        
                 <!-- ============================================================== -->
                 <!-- End Container fluid  -->
                 <!-- ============================================================== -->

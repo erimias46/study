@@ -27,9 +27,17 @@
 </head>
 <body>
 <?php
+
+session_start();
+
+if(!isset($_SESSION['adminid'] )and !isset($_SESSION['level']) ){
+    header("location: login/index.php");
+}
 require("header/header.php");
 require("registeration/registeration.php");
 require("conn.php");
+
+
 
 ?>
 
