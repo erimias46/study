@@ -70,6 +70,9 @@ if (isset($_GET['renewal'])) {
       while($row = mysqli_fetch_assoc($result)) {
        
         $edate=$row['edate'];
+        $sdate=$row['sdate'];
+        $pdf=$row['pdf'];
+        
       }
     } else {
       echo "0 results";
@@ -84,6 +87,7 @@ if (isset($_POST['update'])) {
 
     $sql = "UPDATE contract SET edate ='$redate'  WHERE userid='$id'";
 
+
     
 
     if (mysqli_query($conn, $sql)) {
@@ -91,6 +95,8 @@ if (isset($_POST['update'])) {
     } else {
     echo "Error updating record: " . mysqli_error($conn);
     }
+
+    $sql8="Insert into renewal (userid,	sdate,edate,renewenddate,adminid,renewcount,renewpdf) values('$id','$sdate','$redate','$adminid','$count','$pdf')";
 }
 
 
@@ -454,8 +460,13 @@ if (isset($_POST['update'])) {
                                                             <button class="button-30" role="button" style="background-color:green;color:white;">
                                                             <a name="edit" href="dashboard.php?renewal=<?php echo $row['userid']; ?>"> Renewal </a>
                                                         </button>
-                                                        
-                                                        <?php }?>
+
+                                                        <button class="button-30" role="button" style="background-color:yellow;color:white;">
+                                                            <a name="edit" href="../info/index.php?view=<?php echo $row['userid']; ?>"> View </a>
+                                                        </button>
+                                                        </td>
+                                                        <?php }else{?>
+                                                        <td>
                                                         <button class="button-30" role="button" style="background-color:yellow;color:white;">
                                                             <a name="edit" href="../info/index.php?view=<?php echo $row['userid']; ?>"> View </a>
                                                         </button>
@@ -463,7 +474,7 @@ if (isset($_POST['update'])) {
                                                     </tr>
 
                                         <?php
-                                                }
+                                                }}
                                             
                                         
                                     

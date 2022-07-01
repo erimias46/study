@@ -1,3 +1,70 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['adminid'] )and !isset($_SESSION['level']) ){
+    header("location: ../login/index.php");
+}
+require("../conn.php");
+$adminid=$_SESSION['adminid'];
+
+
+
+
+$sql4 = "Select * from admin where adminid='$adminid'";
+$result4= mysqli_query($conn, $sql4);
+
+  
+    while($row4= mysqli_fetch_assoc($result4)) {
+        $adminname=$row4['fullname'];
+        $level=$row4['level'];
+        $username=$row4['username'];
+        $password=$row4['password'];
+        $phone=$row4['phonenum'];
+       # $fullname=$row['fullname'];
+      
+      
+    }
+
+    if (isset($_POST['uadmin'])){
+        $ufullname=$_POST['ufullname'];
+        $uemail=$_POST['uemail'];
+        $upassword=$_POST['upassword'];
+        $ulevel=$_POST['ulevel'];
+        $uphonenum=$_POST['uphonenum'];
+
+        if($alevel="superadmin"){
+            $alevel=1;
+        }
+        else{
+            $alevel=0;
+        }
+
+        $sql2="Update admin set fullname='$ufullname',username='$uemail',password='$upassword',level='$ulevel',phonenum='$uphonenum' where adminid='$adminid'  ";
+        if(mysqli_query($conn,$sql2)){
+            echo "updated successfully";
+        }
+        
+    }
+    if(isset($_POST['aadmin'])){
+
+        $afullname=$_POST['afullname'];
+        $aemail=$_POST['aemail'];
+        $alevel=$_POST['alevel'];
+        $apassword=$_POST['apassword'];
+        $aphonenum=$_POST['aphonenum'];
+
+        
+
+        
+       
+        $sql3=" Insert into admin (fullname,username,password,level,phonenum) values ('$afullname','$aemail','$apassword','$alevel','$aphonenum')";
+        if(mysqli_query($conn,$sql3)){
+            echo "Inserted successfully";
+            
+        }
+    }
+
+?>
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
 
@@ -99,7 +166,7 @@
                         <li>
                             <a class="profile-pic" href="#">
                                 <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
-                                    class="img-circle"><span class="text-white font-medium">Dr. Sriaye</span></a>
+                                    class="img-circle"><span class="text-white font-medium"><?php echo ucfirst($adminname)?></span></a>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -134,6 +201,11 @@
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hide-menu">Profile</span>
                             </a>
+                        </li>
+                        <li class="text-center p-20 upgrade-btn">
+                            <a href="../login/logout.php"
+                                class="btn d-grid btn-danger text-white">
+                                Logout</a>
                         </li>
                         
                        
@@ -191,7 +263,7 @@
                                     <div class="user-content">
                                         
                                         <h4 class="text-white mt-2">User Name</h4>
-                                        <h5 class="text-white mt-2">info@myadmin.com</h5>
+                                        <h5 class="text-white mt-2"><?php echo ucfirst($username)?></h5>
                                     </div>
                                 </div>
                             </div>
@@ -203,39 +275,54 @@
                     <div class="col-lg-8 col-xlg-9 col-md-12">
                         <div class="card">
                             <div class="card-body">
-                                <form class="form-horizontal form-material">
+                                <form class="form-horizontal form-material" method="post">
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Full Name</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" placeholder="Johnathan Doe"
-                                                class="form-control p-0 border-0"> </div>
+                                            <input type="text" value="<?php echo ucfirst($adminname)?>"
+                                                class="form-control p-0 border-0" name="ufullname"> </div>
                                     </div>
                                     <div class="form-group mb-4">
                                         <label for="example-email" class="col-md-12 p-0">Email</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="email" placeholder="johnathan@admin.com"
-                                                class="form-control p-0 border-0" name="example-email"
+                                            <input type="email" value="<?php echo ucfirst($username)?>"
+                                                class="form-control p-0 border-0" name="uemail"
                                                 id="example-email">
                                         </div>
                                     </div>
                                     <div class="form-group mb-4">
                                         <label class="col-md-12 p-0">Password</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="password" value="password" class="form-control p-0 border-0">
+                                            <input type="password" value="<?php echo ucfirst($password)?>" name="upassword"class="form-control p-0 border-0">
                                         </div>
                                     </div>
                                     <div class="form-group mb-4">
-                                        <label class="col-md-12 p-0">Phone No</label>
+                                        <label for="example-email" class="col-md-12 p-0">Phone</label>
                                         <div class="col-md-12 border-bottom p-0">
-                                            <input type="text" placeholder="123 456 7890"
-                                                class="form-control p-0 border-0">
+                                            <input type="tel" value="<?php echo ($phone)?>"
+                                                class="form-control p-0 border-0" name="uphonenum"
+                                                id="example-email">
                                         </div>
                                     </div>
+
+                                    <?php if ($level==1){?>
+                                    <div class="form-group mb-4">
+                                        <label class="col-md-12 p-0">Level</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <select name="ulevel" class="form-control p-0 border-0">
+                                                <option value="1" name="admin">Super admin</option>
+                                                <option value="0" name="admin">Normal admin</option>
+
+                                            </select>
+                                          
+                                        </div>
+                                    </div>
+                                    <?php }?>
                                     
                                     
                                     <div class="form-group mb-4">
                                         <div class="col-sm-12">
-                                            <button class="btn btn-success">Update Profile</button>
+                                            <button class="btn btn-success" name="uadmin">Update Profile</button>
                                         </div>
                                     </div>
                                 </form>
@@ -243,7 +330,88 @@
                         </div>
                     </div>
                     <!-- Column -->
+
+                   
                 </div>
+
+                <?php if($level==1){?>
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-4 col-xlg-3 col-md-12">
+                        <div class="white-box">
+                            <div class="user-bg"> 
+                                <div class="overlay-box">
+                                    <div class="user-content">
+                                        
+                                        <h4 class="text-white mt-2">User Name</h4>
+                                        <h5 class="text-white mt-2"><?php echo ucfirst($username)?></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-8 col-xlg-9 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="form-horizontal form-material" method="post">
+                                    <div class="form-group mb-4">
+                                        <label class="col-md-12 p-0">Full Name</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="text" name="afullname"
+                                                class="form-control p-0 border-0"> </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label for="example-email" class="col-md-12 p-0">Email</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="email" name="aemail"
+                                                class="form-control p-0 border-0" name="example-email" autocomplete="false"
+                                                id="example-email">
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="col-md-12 p-0">Password</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="password" name="apassword" class="form-control p-0 border-0">
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <label class="col-md-12 p-0">Phone Number</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <input type="tel" name="aphonenum" class="form-control p-0 border-0">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group mb-4">
+                                        <label class="col-md-12 p-0">Level</label>
+                                        <div class="col-md-12 border-bottom p-0">
+                                            <select name="alevel" class="form-control p-0 border-0">
+                                                <option value="1" name="superadmin">Super admin</option>
+                                                <option value="0" name="normal">Normal admin</option>
+
+                                            </select>
+                                          
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                    <div class="form-group mb-4">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-success" name="aadmin">Add Admin</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                <?php }?>
+                   
+                </div>
+
+                
                 <!-- Row -->
                 <!-- ============================================================== -->
                 <!-- End PAge Content -->
