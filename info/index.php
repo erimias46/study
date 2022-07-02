@@ -68,6 +68,26 @@ if (isset($_GET['view'])) {
     $edate = $row4['edate'];
     $pdf = $row4['pdf'];
   }
+
+  $sql5 = "SELECT * from renewal where userid='$id'";
+
+  $result5 = mysqli_query($conn, $sql5);
+  while ($row5 = mysqli_fetch_assoc($result5)) {
+
+    $rsdate = $row5['sdate'];
+    $redate = $row5['edate'];
+    $rredate = $row5['renewenddate'];
+    $count=$row5['renewcount'];
+    $pdf = $row5['renewpdf'];
+    $adminr=$row5['adminid'];
+    $sql6 = "SELECT * from admin where adminid='$adminr'";
+
+    $result6 = mysqli_query($conn, $sql6);
+    while ($row6 = mysqli_fetch_assoc($result6)) {
+      $byadmin=$row6['fullname'];
+      
+    }
+  }
 }
 
 ?>
@@ -419,7 +439,7 @@ if (isset($_GET['view'])) {
             </div>
           </div>
 
-<?php if($count>1) ?>
+
 
           <div class="col-lg-10" style="margin-top:50px">
             <div class="card mb-8">
@@ -439,11 +459,11 @@ if (isset($_GET['view'])) {
                   <tbody>
                     <tr>
                       <th scope="row">1</th>
-                      <td>Mark</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
-                      <td>Otto</td>
-                      <td>@mdo</td>
+                      <td><?php echo $rsdate;?></td>
+                      <td><?php echo $redate;?></td>
+                      <td><?php echo $rredate;?></td>
+                      <td><?php echo $count;?></td>
+                      <td><?php echo $byadmin;?></td>
                     </tr>
                     <tr>
                       <th scope="row">2</th>
