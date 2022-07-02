@@ -94,9 +94,15 @@ if (isset($_POST['update'])) {
     
     } else {
     echo "Error updating record: " . mysqli_error($conn);
-    }
 
-    $sql8="Insert into renewal (userid,	sdate,edate,renewenddate,adminid,renewcount,renewpdf) values('$id','$sdate','$redate','$adminid','$count','$pdf')";
+    }
+$count=1;
+    $sql8="Insert into renewal (userid,	sdate,edate,renewenddate,adminid,renewcount,renewpdf) values('$id','$sdate','$edate','$redate','$adminid','$count','$pdf')";
+    if (mysqli_query($conn, $sql8)) {
+    
+    } else {
+    echo "Error updating record: " . mysqli_error($conn);
+    }
 }
 
 
