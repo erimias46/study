@@ -47,7 +47,7 @@ if (isset($_GET['edit'])) {
   $pemail=$row['email'];
   $pcollege=$row['college'];
   $pdepartment=$row['department'];
-  #$pscholar=$row['scholar'];
+  //$pscholar=$row['scholar'];
   $pphone=$row['phone'];
   $paward=$row['award'];
 
@@ -502,11 +502,11 @@ $target_dir1="registeration/uploads/";
 
                 <!-- Default checked radio -->
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="paward" id="flexRadioDefault2" checked />
+                  <input class="form-check-input" type="radio" name="paward" value="MSc" id="flexRadioDefault2" checked />
                   <label class="form-check-label" for="flexRadioDefault2">MSc </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="paward" id="flexRadioDefault2" checked />
+                  <input class="form-check-input" type="radio" name="paward"  value="PHD"id="flexRadioDefault2" checked />
                   <label class="form-check-label" for="flexRadioDefault2">PHD </label>
                 </div>
                 <label for="" style="color:green;">Choosen</label> <?php echo $paward ?>

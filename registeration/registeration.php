@@ -114,7 +114,7 @@ if(isset($_POST['submit'])){
    
 
 
-        $sql ="INSERT INTO personal (userid,firstname, lastname, email ,acadamic,sex, college,department,award) VALUES ('$userid','$pfirstname', '$plastname', '$pemail','$pacadamic','$psex','$pcollege','$pdepartment','$paward');";
+        $sql ="INSERT INTO personal (userid,firstname, lastname, email ,acadamic,sex, college,department,award) VALUES ('$userid','$pfirstname', '$plastname', '$pemail','$pacadamic','$psex','$pcollege','$pdepartment','$pscholar');";
         $sql.="INSERT INTO guarantee (userid,firstname, lastname,sex,email,phone) VALUES ('$userid','$gfirstname', '$glastname','$gsex', '$gemail','$gphone');";
         $sql.="INSERT INTO university (userid,uniname,unicountry,uniemail) VALUES ('$userid','$uniname', '$unicountry','$uniemail');";
         $sql.="INSERT INTO contract (userid,sdate,edate,pdf) VALUES ('$userid','$sdate', '$edate','$target_file')";
@@ -228,11 +228,11 @@ if(isset($_POST['submit'])){
 
                 <!-- Default checked radio -->
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="pscholar" id="flexRadioDefault2" checked />
+                  <input class="form-check-input" type="radio" name="pscholar" value="MSc" id="flexRadioDefault2" checked />
                   <label class="form-check-label" for="flexRadioDefault2">MSc </label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="pscholar" id="flexRadioDefault2" checked />
+                  <input class="form-check-input" type="radio" name="pscholar" value="PHD" id="flexRadioDefault2" checked />
                   <label class="form-check-label" for="flexRadioDefault2">PHD </label>
                 </div>
                 <div class="mb-3">
