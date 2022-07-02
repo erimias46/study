@@ -78,9 +78,9 @@ if(isset($_POST['submit'])){
  }
  
  // Allow certain file formats
- if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
- && $imageFileType != "gif" ) {
-   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+ if($imageFileType != "pdf" && $imageFileType != "docx" && $imageFileType != "doc"
+ && $imageFileType != "txt" ) {
+   echo "Sorry, only pdf, docx, doc & txt files are allowed.";
    $uploadOk = 0;
  }
  
@@ -114,7 +114,7 @@ if(isset($_POST['submit'])){
    
 
 
-        $sql ="INSERT INTO personal (userid,firstname, lastname, email ,acadamic,sex, college,department,award) VALUES ('$userid','$pfirstname', '$plastname', '$pemail','$pacadamic','$psex','$pcollege','$pdepartment','$pscholar');";
+        $sql ="INSERT INTO personal (userid,firstname, lastname, email ,acadamic,sex, college,department,award,phone) VALUES ('$userid','$pfirstname', '$plastname', '$pemail','$pacadamic','$psex','$pcollege','$pdepartment','$pscholar','$pphone');";
         $sql.="INSERT INTO guarantee (userid,firstname, lastname,sex,email,phone) VALUES ('$userid','$gfirstname', '$glastname','$gsex', '$gemail','$gphone');";
         $sql.="INSERT INTO university (userid,uniname,unicountry,uniemail) VALUES ('$userid','$uniname', '$unicountry','$uniemail');";
         $sql.="INSERT INTO contract (userid,sdate,edate,pdf) VALUES ('$userid','$sdate', '$edate','$target_file')";
@@ -260,20 +260,21 @@ if(isset($_POST['submit'])){
                   <input type="text" class="form-control" id="exampleInput1" name="glastname"style="max-width: 500px;" />
                 </div>
 
+                
                 <div class="mb-3">
-                  <label for="exampleInput1" class="form-label">Sex</label>
+                <label for="exampleInput1" class="form-label">Sex</label>
 
-                  <!-- Default radio -->
+                <!-- Default radio -->
 
-                  <input type="radio" class="btn-check" name="gsex"  value="male"  autocomplete="off" />
-                  <label class="btn btn-primary" >Male</label>
+                <input type="radio" class="btn-check" name="gsex" id="option1"  value="male" autocomplete="off" checked />
+                <label class="btn btn-primary" for="option3">Male</label>
 
-                  <input type="radio" class="btn-check" name="gsex"  value="female" autocomplete="off" />
-                  <label class="btn btn-danger" >Female</label>
+                <input type="radio" class="btn-check" name="gsex" id="option2"  value="female" autocomplete="off" />
+                <label class="btn btn-danger" for="option4">Female</label>
 
 
 
-                </div>
+              </div>
                 <div class="mb-3">
                   <label for="exampleInput2" class="form-label">Email address</label>
                   <input type="email" class="form-control" id="exampleInput2" name="gemail"style="max-width: 500px;" />

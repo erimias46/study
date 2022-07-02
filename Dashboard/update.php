@@ -156,9 +156,9 @@ if(isset($_POST['update'])){
  }
  
  // Allow certain file formats
- if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
- && $imageFileType != "gif" ) {
-   echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+ if($imageFileType != "doc" && $imageFileType != "docx" && $imageFileType != "pdf"
+ && $imageFileType != "txt" ) {
+   echo "Sorry, only doc, docx, pdf & txt files are allowed.";
    $uploadOk = 0;
  }
  
