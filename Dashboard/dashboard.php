@@ -497,6 +497,7 @@ $count=1;
                 <!-- ============================================================== -->
 
                 <?php if(isset($_GET['renewal'])) {?>
+                    
                 <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
                             <h3 class="box-title">Renewal</h3>
