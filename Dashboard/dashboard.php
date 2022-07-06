@@ -335,6 +335,10 @@ if (isset($_POST['update'])) {
                 <!-- ============================================================== -->
                 <!-- Three charts -->
                 <!-- ============================================================== -->
+
+                <?php
+                    $sql10="select count(case when sex='male' then 1 end) as male_cnt, count(case when sex='female' then 1 end) as female_cnt, count(*) as total_cnt from personal group by sex";
+                ?>
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-md-12">
                         <div class="white-box analytics-info">
