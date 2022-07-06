@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['adminid'] )and !isset($_SESSION['level']) ){
+if (!isset($_SESSION['adminid']) and !isset($_SESSION['level'])) {
     header("location: ../login/index.php");
 }
 $dbhost = "localhost";
@@ -17,43 +17,38 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$adminid=$_SESSION['adminid'];
+$adminid = $_SESSION['adminid'];
 
 
 $sql4 = "Select * from admin where adminid='$adminid'";
-$result4= mysqli_query($conn, $sql4);
+$result4 = mysqli_query($conn, $sql4);
 
-  
-    while($row4= mysqli_fetch_assoc($result4)) {
-        $adminname=$row4['fullname'];
-        $level=$row4['level'];
-     
 
-        
-      
-    }
+while ($row4 = mysqli_fetch_assoc($result4)) {
+    $adminname = $row4['fullname'];
+    $level = $row4['level'];
+}
 
 
 
 
 if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
-   
 
 
-$sql = "DELETE FROM `personal` WHERE userid='$id';";
-$sql.= "DELETE FROM `guarantee` WHERE userid='$id';";
-$sql.= "DELETE FROM `university` WHERE userid='$id';";
-$sql.= "DELETE FROM `contract` WHERE userid='$id'";
 
-if (mysqli_multi_query($conn, $sql)) {
-  echo "Record deleted successfully";
-} else {
-  echo "Error deleting record: " . mysqli_error($conn);
-}
+    $sql = "DELETE FROM `personal` WHERE userid='$id';";
+    $sql .= "DELETE FROM `guarantee` WHERE userid='$id';";
+    $sql .= "DELETE FROM `university` WHERE userid='$id';";
+    $sql .= "DELETE FROM `contract` WHERE userid='$id'";
 
-header('location:dashboard.php');
+    if (mysqli_multi_query($conn, $sql)) {
+        echo "Record deleted successfully";
+    } else {
+        echo "Error deleting record: " . mysqli_error($conn);
+    }
 
+    header('location:dashboard.php');
 }
 
 if (isset($_GET['renewal'])) {
@@ -64,44 +59,40 @@ if (isset($_GET['renewal'])) {
 
     $sql = "SELECT * FROM contract WHERE userid='$id'";
     $result = mysqli_query($conn, $sql);
-    
+
     if (mysqli_num_rows($result) > 0) {
-      
-      while($row = mysqli_fetch_assoc($result)) {
-       
-        $edate=$row['edate'];
-        $sdate=$row['sdate'];
-        $pdf=$row['pdf'];
-        
-      }
+
+        while ($row = mysqli_fetch_assoc($result)) {
+
+            $edate = $row['edate'];
+            $sdate = $row['sdate'];
+            $pdf = $row['pdf'];
+        }
     } else {
-      echo "0 results";
+        echo "0 results";
     }
 }
 
 if (isset($_POST['update'])) {
 
     $id = $_GET['renewal'];
-    
-    $redate=date('Y-m-d',strtotime($_POST['redate']));
+
+    $redate = date('Y-m-d', strtotime($_POST['redate']));
 
     $sql = "UPDATE contract SET edate ='$redate'  WHERE userid='$id'";
 
 
-    
+
 
     if (mysqli_query($conn, $sql)) {
-    
     } else {
-    echo "Error updating record: " . mysqli_error($conn);
-
+        echo "Error updating record: " . mysqli_error($conn);
     }
-$count=1;
-    $sql8="Insert into renewal (userid,	sdate,edate,renewenddate,adminid,renewcount,renewpdf) values('$id','$sdate','$edate','$redate','$adminid','$count','$pdf')";
+    $count = 1;
+    $sql8 = "Insert into renewal (userid,	sdate,edate,renewenddate,adminid,renewcount,renewpdf) values('$id','$sdate','$edate','$redate','$adminid','$count','$pdf')";
     if (mysqli_query($conn, $sql8)) {
-    
     } else {
-    echo "Error updating record: " . mysqli_error($conn);
+        echo "Error updating record: " . mysqli_error($conn);
     }
 }
 
@@ -176,9 +167,13 @@ $count=1;
             transform: translateY(2px);
         }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
 </head>
 
 <body>
+
+
+
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
     <!-- ============================================================== -->
@@ -220,7 +215,7 @@ $count=1;
                     <!-- ============================================================== -->
                     <!-- ============================================================== -->
                     <!-- toggle and nav items -->
-                    
+
                     <!-- ============================================================== -->
                     <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
@@ -232,9 +227,9 @@ $count=1;
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
-                    <p class="in"style="color:white;font-size:30px;text-align:center; margin-left:150px;margin-top:10px">College of Applied Science</p>
+                    <p class="in" style="color:white;font-size:30px;text-align:center; margin-left:150px;margin-top:10px">College of Applied Science</p>
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
-                        
+
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
@@ -251,7 +246,8 @@ $count=1;
                         <!-- ============================================================== -->
                         <li>
                             <a class="profile-pic" href="#">
-                                <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><span class="text-white font-medium"><?php echo $adminname; echo " Level ".$level?></span></a>
+                                <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><span class="text-white font-medium"><?php echo $adminname;
+                                                                                                                                                            echo " Level " . $level ?></span></a>
                         </li>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -293,8 +289,7 @@ $count=1;
                         </li>
 
                         <li class="text-center p-20 upgrade-btn">
-                            <a href="../login/logout.php"
-                                class="btn d-grid btn-danger text-white">
+                            <a href="../login/logout.php" class="btn d-grid btn-danger text-white">
                                 Logout</a>
                         </li>
 
@@ -341,43 +336,58 @@ $count=1;
                 <!-- Three charts -->
                 <!-- ============================================================== -->
                 <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-12">
+                    <div class="col-lg-8 col-md-12">
                         <div class="white-box analytics-info">
                             <h3 class="box-title">Total Visit</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
                                 <li>
-                                    <div id="sparklinedash"><canvas width="67" height="30" style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                                    <div class="container">
+                                        <canvas id="mychart"> </canvas>
+                                        <script>
+                                            let mychart = document.getElementById('mychart').getContext('2d');
+                                            let massPopChart = new Chart(mychart, {
+                                                type: 'bar',
+                                                data: {
+                                                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                                    datasets: [{
+                                                        label: '# of Votes',
+                                                        data: [12, 19, 3, 5, 2, 3],
+                                                        backgroundColor: [
+                                                            'rgba(255, 99, 132, 0.2)',
+                                                            'rgba(54, 162, 235, 0.2)',
+                                                            'rgba(255, 206, 86, 0.2)',
+                                                            'rgba(75, 192, 192, 0.2)',
+                                                            'rgba(153, 102, 255, 0.2)',
+                                                            'rgba(255, 159, 64, 0.2)'
+                                                        ],
+                                                        borderColor: [
+                                                            'rgba(255, 99, 132, 1)',
+                                                            'rgba(54, 162, 235, 1)',
+                                                            'rgba(255, 206, 86, 1)',
+                                                            'rgba(75, 192, 192, 1)',
+                                                            'rgba(153, 102, 255, 1)',
+                                                            'rgba(255, 159, 64, 1)'
+                                                        ],
+                                                        borderWidth: 1
+                                                    }]
+                                                },
+                                                options: {
+                                                    scales: {
+                                                        y: {
+                                                            beginAtZero: true
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                        </script>
                                     </div>
                                 </li>
-                                <li class="ms-auto"><span class="counter text-success">659</span></li>
+
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Page Views</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash2"><canvas width="67" height="30" style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ms-auto"><span class="counter text-purple">869</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Unique Visitor</h3>
-                            <ul class="list-inline two-part d-flex align-items-center mb-0">
-                                <li>
-                                    <div id="sparklinedash3"><canvas width="67" height="30" style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
-                                    </div>
-                                </li>
-                                <li class="ms-auto"><span class="counter text-info">911</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+
+
                 </div>
 
 
@@ -421,71 +431,73 @@ $count=1;
 
                                         <?php
                                         $sql = "SELECT firstname,lastname,email,lastname,pdf,sdate,edate,award,personal.userid from personal JOIN contract ON personal.userid=contract.userid;";
-                                       
+
                                         $result = mysqli_query($conn, $sql);
-                                       
 
-                                        $v=1;
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                               
 
-                                                    $datetime1 = strtotime(date("Y-m-d"));
-                                                    $datetime2 = strtotime($row["edate"]);
+                                        $v = 1;
+                                        while ($row = mysqli_fetch_assoc($result)) {
 
-                                                    $secs = $datetime2 - $datetime1; // == <seconds between the two times>
-                                                    $days = $secs / 86400;
-                                                    if($days<=0){
-                                                        $days='<span class="text-danger">Expired</span>';
-                                                    }else{
-                                                        $days=$days."<span> days left</span>";
-                                                    }
+
+                                            $datetime1 = strtotime(date("Y-m-d"));
+                                            $datetime2 = strtotime($row["edate"]);
+
+                                            $secs = $datetime2 - $datetime1; // == <seconds between the two times>
+                                            $days = $secs / 86400;
+                                            if ($days <= 0) {
+                                                $days = '<span class="text-danger">Expired</span>';
+                                            } else {
+                                                $days = $days . "<span> days left</span>";
+                                            }
                                         ?>
 
 
-                                                    <tr>
-                                                        <td><?php echo $v; $v++;?></td>
-                                                        <td class="txt-oflo"><?= $row["firstname"] ?></td>
-                                                        <td><?= $row["lastname"] ?></td>
-                                                        <td class="txt-oflo"><?= $row["award"] ?></td>
-                                                        <td><span class="text-success"><?= $row["sdate"] ?></span></td>
-                                                        <td><span class="text-success"><?= $row["edate"] ?></span></td>
-                                                        <td><span class="text-success"><?= $days?></span></td>
-                                                        <td><span class="text-success"><?= $row["email"] ?></span></td>
-                                                        <td><span class="text-success"><a href="../<?= $row["pdf"] ?> " target="_blank">PDF</a></span></td>
-                                                        <?php if ($level==1){?>
-                                                        <td><button class="button-30" role="button" style="background-color:blue;color:white;">
-                                                        <i class="fas fa-edit"></i>
-                                                        <a name="edits" href="update.php?edit=<?php echo $row['userid'];?>">
-                                                            Edit</button></a>
-                                                            <button class="button-30" role="button" style="background-color:red;color:white;">
+                                            <tr>
+                                                <td><?php echo $v;
+                                                    $v++; ?></td>
+                                                <td class="txt-oflo"><?= $row["firstname"] ?></td>
+                                                <td><?= $row["lastname"] ?></td>
+                                                <td class="txt-oflo"><?= $row["award"] ?></td>
+                                                <td><span class="text-success"><?= $row["sdate"] ?></span></td>
+                                                <td><span class="text-success"><?= $row["edate"] ?></span></td>
+                                                <td><span class="text-success"><?= $days ?></span></td>
+                                                <td><span class="text-success"><?= $row["email"] ?></span></td>
+                                                <td><span class="text-success"><a href="../<?= $row["pdf"] ?> " target="_blank">PDF</a></span></td>
+                                                <?php if ($level == 1) { ?>
+                                                    <td><button class="button-30" role="button" style="background-color:blue;color:white;">
+                                                            <i class="fas fa-edit"></i>
+                                                            <a name="edits" href="update.php?edit=<?php echo $row['userid']; ?>">
+                                                                Edit</button></a>
+                                                        <button class="button-30" role="button" style="background-color:red;color:white;">
                                                             <i class="fa fa-trash"></i>
-                                                            <a name="delete" href="dashboard.php?delete=<?php echo $row['userid'];?>">
-                                                            Delete</a>
+                                                            <a name="delete" href="dashboard.php?delete=<?php echo $row['userid']; ?>">
+                                                                Delete</a>
                                                         </button>
-                                                        
-                                                            <button class="button-30" role="button" style="background-color:green;color:white;">
+
+                                                        <button class="button-30" role="button" style="background-color:green;color:white;">
                                                             <a name="edit" href="dashboard.php?renewal=<?php echo $row['userid']; ?>"> Renewal </a>
                                                         </button>
 
                                                         <button class="button-30" role="button" style="background-color:yellow;color:white;">
                                                             <a name="edit" href="../info/index.php?view=<?php echo $row['userid']; ?>"> View </a>
                                                         </button>
-                                                        </td>
-                                                        <?php }else{?>
-                                                        <td>
+                                                    </td>
+                                                <?php } else { ?>
+                                                    <td>
                                                         <button class="button-30" role="button" style="background-color:yellow;color:white;">
                                                             <a name="edit" href="../info/index.php?view=<?php echo $row['userid']; ?>"> View </a>
                                                         </button>
-                                                        </td>
-                                                    </tr>
+                                                    </td>
+                                            </tr>
 
-                                        <?php
-                                                }}
-                                            
-                                        
-                                    
+                                    <?php
+                                                }
+                                            }
 
-                                        ?>
+
+
+
+                                    ?>
 
 
                                     </tbody>
@@ -496,32 +508,32 @@ $count=1;
                 </div>
                 <!-- ============================================================== -->
 
-                <?php if(isset($_GET['renewal'])) {?>
-                    
-                <div class="col-lg-4 col-md-12">
+                <?php if (isset($_GET['renewal'])) { ?>
+
+                    <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
                             <h3 class="box-title">Renewal</h3>
-                            <ul >
+                            <ul>
                                 <form action="" method="post" enctype="multipart/form-data">
-                                    <div ><label for="">Renewal End date</label>
-                                    <?php if(isset($edate))echo $edate;?>
-                                    <span ><input type="date" name="redate"> </span>
-                                
-                                    <label for="">Renewal Contract PDF</label>
-                                    
-                                
-                                
-                                <span ><input type="file"> </span>
+                                    <div><label for="">Renewal End date</label>
+                                        <?php if (isset($edate)) echo $edate; ?>
+                                        <span><input type="date" name="redate"> </span>
 
-                                <span ><button class="button-30"  type="submit" name="update" role="button" style="background-color:green;color:white;">
-                                        UPDATE 
-                                </button></span></li>
+                                        <label for="">Renewal Contract PDF</label>
+
+
+
+                                        <span><input type="file"> </span>
+
+                                        <span><button class="button-30" type="submit" name="update" role="button" style="background-color:green;color:white;">
+                                                UPDATE
+                                            </button></span></li>
                                 </form>
                             </ul>
                         </div>
-                    </div> 
-                    <?php } else{
-                        }?>        
+                    </div>
+                <?php } else {
+                } ?>
                 <!-- ============================================================== -->
                 <!-- End Container fluid  -->
                 <!-- ============================================================== -->
