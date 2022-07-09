@@ -331,25 +331,36 @@ if (isset($_POST['update'])) {
                 <!-- ============================================================== -->
 
                 <?php
-                $sql10 = "select count(case when sex='male' then 1 end) as male_cnt, count(case when sex='female' then 1 end) as female_cnt, count(*) as total_cnt from personal group by sex";
+                $con= new mysqli('localhost','root','','study');
+                $query=$con->query("SELECT count(*) as gendercount,sex FROM personal GROUP By sex;");
+                
+                foreach($query as $data){
+                    $gendercount[]=$data['gendercount'];
+                    $sex[]=$data['sex'];
+
+
+                }
+
                 ?>
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-md-12">
                         <div class="white-box analytics-info">
-                            <h3 class="box-title">Total Visit</h3>
+                            <h3 class="box-title">Based on Gender</h3>
                             <ul class="list-inline two-part d-flex align-items-center mb-0">
                                 <li>
                                     <div class="container">
                                         <canvas id="mychart"> </canvas>
                                         <script>
+                                            const labels=<?php echo json_encode($sex);?>;
+                                            const datas=<?php echo json_encode($gendercount);?>;
                                             let mychart = document.getElementById('mychart').getContext('2d');
                                             let massPopChart = new Chart(mychart, {
                                                 type: 'bar',
                                                 data: {
-                                                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                                                    labels: labels,
                                                     datasets: [{
-                                                        label: '# of Votes',
-                                                        data: [12, 19, 3, 5, 2, 3],
+                                                        label: '#',
+                                                        data: datas,
                                                         backgroundColor: [
                                                             'rgba(255, 99, 132, 0.2)',
                                                             'rgba(54, 162, 235, 0.2)',
@@ -387,6 +398,7 @@ if (isset($_POST['update'])) {
 
 
                 </div>
+            </div>
 
 
                 <!-- ============================================================== -->
@@ -430,6 +442,7 @@ if (isset($_POST['update'])) {
                                     <tbody>
 
                                         <?php
+                                        if(!isset($_GET['search'])){
                                         $sql = "SELECT firstname,lastname,email,lastname,pdf,sdate,edate,award,personal.userid from personal JOIN contract ON personal.userid=contract.userid;";
 
                                         $result = mysqli_query($conn, $sql);
@@ -536,7 +549,115 @@ if (isset($_POST['update'])) {
                         </div>
                     </div>
                 <?php } else {
-                } ?>
+                }}else{
+                    $filtervalues=$_GET['search'];
+                    $sql = "SELECT firstname,lastname,email,lastname,pdf,sdate,edate,award,personal.userid from personal JOIN contract ON personal.userid=contract.userid  where firstname LIKE'%$filtervalues%';";
+
+                    $result = mysqli_query($conn, $sql);
+
+
+                    $v = 1;
+                    while ($row = mysqli_fetch_assoc($result)) {
+
+
+                        $datetime1 = strtotime(date("Y-m-d"));
+                        $datetime2 = strtotime($row["edate"]);
+
+                        $secs = $datetime2 - $datetime1; // == <seconds between the two times>
+                        $days = $secs / 86400;
+                        if ($days <= 0) {
+                            $days = '<span class="text-danger">Expired</span>';
+                        } else {
+                            $days = $days . "<span> days left</span>";
+                        }
+                    ?>
+
+
+                        <tr>
+                            <td><?php echo $v;
+                                $v++; ?></td>
+                            <td class="txt-oflo"><?= $row["firstname"] ?></td>
+                            <td><?= $row["lastname"] ?></td>
+                            <td class="txt-oflo"><?= $row["award"] ?></td>
+                            <td><span class="text-success"><?= $row["sdate"] ?></span></td>
+                            <td><span class="text-success"><?= $row["edate"] ?></span></td>
+                            <td><span class="text-success"><?= $days ?></span></td>
+                            <td><span class="text-success"><?= $row["email"] ?></span></td>
+                            <td><span class="text-success"><a href="../<?= $row["pdf"] ?> " target="_blank">PDF</a></span></td>
+                            <?php if ($level == 1) { ?>
+                                <td><button class="button-30" role="button" style="background-color:blue;color:white;">
+                                        <i class="fas fa-edit"></i>
+                                        <a name="edits" href="update.php?edit=<?php echo $row['userid']; ?>">
+                                            Edit</button></a>
+                                    <button class="button-30" role="button" style="background-color:red;color:white;">
+                                        <i class="fa fa-trash"></i>
+                                        <a name="delete" href="dashboard.php?delete=<?php echo $row['userid']; ?>">
+                                            Delete</a>
+                                    </button>
+
+                                    <button class="button-30" role="button" style="background-color:green;color:white;">
+                                        <a name="edit" href="dashboard.php?renewal=<?php echo $row['userid']; ?>">
+                                            Renewal </a>
+                                    </button>
+
+                                    <button class="button-30" role="button" style="background-color:yellow;color:white;">
+                                        <a name="edit" href="../info/index.php?view=<?php echo $row['userid']; ?>">
+                                            View </a>
+                                    </button>
+                                </td>
+                            <?php } else { ?>
+                                <td>
+                                    <button class="button-30" role="button" style="background-color:yellow;color:white;">
+                                        <a name="edit" href="../info/index.php?view=<?php echo $row['userid']; ?>">
+                                            View </a>
+                                    </button>
+                                </td>
+                        </tr>
+
+                <?php
+                            }
+                        }
+
+
+
+
+                ?>
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+<!-- ============================================================== -->
+
+<?php if (isset($_GET['renewal'])) { ?>
+
+<div class="col-lg-4 col-md-12">
+    <div class="white-box analytics-info">
+        <h3 class="box-title">Renewal</h3>
+        <ul>
+            <form action="" method="post" enctype="multipart/form-data">
+                <div><label for="">Renewal End date</label>
+                    <?php if (isset($edate)) echo $edate; ?>
+                    <span><input type="date" name="redate"> </span>
+
+                    <label for="">Renewal Contract PDF</label>
+
+
+
+                    <span><input type="file"> </span>
+
+                    <span><button class="button-30" type="submit" name="update" role="button" style="background-color:green;color:white;">
+                            UPDATE
+                        </button></span></li>
+            </form>
+        </ul>
+    </div>
+</div>
+<?php } else {
+}} ?>
                 <!-- ============================================================== -->
                 <!-- End Container fluid  -->
                 <!-- ============================================================== -->
