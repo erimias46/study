@@ -196,7 +196,7 @@ if (isset($_POST['update'])) {
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="dashboard.html">
+                    <a class="navbar-brand" href="dashboard.php">
                         <!-- Logo icon -->
                         <b class="logo-icon">
                             <!-- Dark Logo icon -->
@@ -227,20 +227,14 @@ if (isset($_POST['update'])) {
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
-                    <p class="in" style="color:white;font-size:30px;text-align:center; margin-left:150px;margin-top:10px">College of Applied Science</p>
+                    <p class="in" style="color:white;font-size:30px;text-align:center; margin-left:150px;margin-top:10px">College
+                        of Applied Science</p>
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
 
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
-                        <li class=" in">
-                            <form role="search" class="app-search d-none d-md-block me-3">
-                                <input type="text" placeholder="Search..." class="form-control mt-0">
-                                <a href="" class="active">
-                                    <i class="fa fa-search"></i>
-                                </a>
-                            </form>
-                        </li>
+
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -282,9 +276,9 @@ if (isset($_POST['update'])) {
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="basic-table.html" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../index.php" aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Basic Table</span>
+                                <span class="hide-menu">Registeration</span>
                             </a>
                         </li>
 
@@ -337,7 +331,7 @@ if (isset($_POST['update'])) {
                 <!-- ============================================================== -->
 
                 <?php
-                    $sql10="select count(case when sex='male' then 1 end) as male_cnt, count(case when sex='female' then 1 end) as female_cnt, count(*) as total_cnt from personal group by sex";
+                $sql10 = "select count(case when sex='male' then 1 end) as male_cnt, count(case when sex='female' then 1 end) as female_cnt, count(*) as total_cnt from personal group by sex";
                 ?>
                 <div class="row justify-content-center">
                     <div class="col-lg-8 col-md-12">
@@ -403,15 +397,17 @@ if (isset($_POST['update'])) {
                         <div class="white-box">
                             <div class="d-md-flex mb-3">
                                 <h3 class="box-title mb-0">Full information</h3>
-                                <div class="col-md-3 col-sm-4 col-xs-6 ms-auto">
-                                    <select class="form-select shadow-none row border-top">
-                                        <option>March 2021</option>
-                                        <option>April 2021</option>
-                                        <option>May 2021</option>
-                                        <option>June 2021</option>
-                                        <option>July 2021</option>
-                                    </select>
-                                </div>
+
+
+
+                                <form method="GET"  style="margin-left: 50px;">
+                                    <input type="text"  name ="search" value="<?php if(isset($_GET['search'])) echo $_GET['search']?>">
+                                    
+                                   <button type="submit" >Search</button>
+                                </form>
+
+
+
                             </div>
                             <div class="table-responsive">
                                 <table class="table no-wrap">
@@ -479,17 +475,20 @@ if (isset($_POST['update'])) {
                                                         </button>
 
                                                         <button class="button-30" role="button" style="background-color:green;color:white;">
-                                                            <a name="edit" href="dashboard.php?renewal=<?php echo $row['userid']; ?>"> Renewal </a>
+                                                            <a name="edit" href="dashboard.php?renewal=<?php echo $row['userid']; ?>">
+                                                                Renewal </a>
                                                         </button>
 
                                                         <button class="button-30" role="button" style="background-color:yellow;color:white;">
-                                                            <a name="edit" href="../info/index.php?view=<?php echo $row['userid']; ?>"> View </a>
+                                                            <a name="edit" href="../info/index.php?view=<?php echo $row['userid']; ?>">
+                                                                View </a>
                                                         </button>
                                                     </td>
                                                 <?php } else { ?>
                                                     <td>
                                                         <button class="button-30" role="button" style="background-color:yellow;color:white;">
-                                                            <a name="edit" href="../info/index.php?view=<?php echo $row['userid']; ?>"> View </a>
+                                                            <a name="edit" href="../info/index.php?view=<?php echo $row['userid']; ?>">
+                                                                View </a>
                                                         </button>
                                                     </td>
                                             </tr>

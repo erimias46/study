@@ -396,10 +396,7 @@ if (isset($_GET['view'])) {
                             <p class="mb-0">Email</p>
                             <p class="mb-0"><?php echo ucfirst($uniemail) ?></p>
                           </li>
-                          <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                            <p class="mb-0">Phone</p>
-                            <p class="mb-0"><?php echo ucfirst($gphone) ?></p>
-                          </li>
+                         
 
                         </ul>
                       </div>
@@ -425,10 +422,7 @@ if (isset($_GET['view'])) {
                             <p class="mb-0">Contract</p>
                             <p class="mb-0"><a href="../<?= $pdf ?> " target="_blank">PDF</a></p>
                           </li>
-                          <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                            <p class="mb-0">Phone</p>
-                            <p class="mb-0"><?php echo ucfirst($gphone) ?></p>
-                          </li>
+                          
 
                         </ul>
                       </div>

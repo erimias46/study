@@ -179,7 +179,7 @@ $target_dir1="registeration/uploads/";
 
 
         $sql="UPDATE personal set firstname='$pfirstname',lastname='$plastname',email='$pemail',acadamic='$pacadamic', sex='$psex',college='$pcollege',department='$pdepartment',award='$paward' WHERE userid='$id';";
-        $sql.="UPDATE guarantee set firstname='$gfirstname',lastname='$glastname',email='$gemail',sex='$gsex',email='$gemail',phone='$gphone';";
+        $sql.="UPDATE guarantee set firstname='$gfirstname',lastname='$glastname',email='$gemail',sex='$gsex',email='$gemail',phone='$gphone' WHERE userid='$id';";
         
         $sql.="UPDATE university set uniname='$uniname', unicountry='$unicountry',uniemail='$uniemail' where userid='$id';";
         $sql.="UPDATE contract set sdate='$sdate', edate='$edate',pdf='$target_file1' where userid='$id'";
