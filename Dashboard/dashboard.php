@@ -413,7 +413,7 @@ if (isset($_POST['update'])) {
 
 
                                 <form method="GET"  style="margin-left: 50px;">
-                                    <input type="text"  name ="search" value="<?php if(isset($_GET['search'])) echo $_GET['search']?>">
+                                    <input type="text"  name ="search">
                                     
                                    <button type="submit" >Search</button>
                                 </form>
