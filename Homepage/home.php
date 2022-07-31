@@ -267,8 +267,9 @@ button {
         <div class="col text-center">
             <div class="card border-0">
                 <div class="card-body">
-                    <div class="card-title"><h3 class="mb-4">Ready to See What your team  can do?</h3></div> 
-                    <div class="row justify-content-center"><div class="col-md-4 col"><p class="small color-text">We'll show you how your team can have more meaningful conservations with your customers without heavy IT effors.  </p> <button type="button" class="btn btn-primary border-0 my-4"><b>Get in Touch</b></button><br> <img src="https://i.imgur.com/pC6AgYC.jpg" class="img-fluid" width="450"></div></div>
+                    <div class="card-title"><h3 class="mb-4">IN PARTNERSHIP WITH AASTU </h3></div> 
+                    <div class="row justify-content-center"><div class="col-md-4 col"><p class="small color-text">This piece of software can help manage and track the students  </p>
+                     <button type="button" class="btn btn-primary border-0 my-4"><b>Contact the Dean</b></button><br> <img src="assets/img/logo 3.jpg" class="img-fluid" width="450"></div></div>
                 </div>                       
             </div>
         </div>
@@ -277,7 +278,7 @@ button {
        <div class="row justify-content-center mb-0 pt-5 pb-0 row-2 px-3">
            <div class="col-12">
                 <div class="row row-2">
-                    <div class="col-sm-3 text-md-center"><h5><span> <i class="fa fa-firefox text-light" aria-hidden="true"></i></span><b>  Stride</b></h5></div>
+                    <div class="col-sm-3 text-md-center"><h5><b> <img src="assets/img/Logo.jpg" width="150px" height="150px"> <span>Study leave </span></b></h5></div>
                     <div class="col-sm-3  my-sm-0 mt-5"><ul class="list-unstyled"><li class="mt-0">Platform</li><li>Help Center</li><li>Security</li></ul></div>
                     <div class="col-sm-3  my-sm-0 mt-5"><ul class="list-unstyled"><li class="mt-0">Customers</li><li>Use Cases</li><li>Customers Services</li></ul></div>
                     <div class="col-sm-3  my-sm-0 mt-5"><ul class="list-unstyled"><li class="mt-0">Company</li><li>About</li><li>Careers- <span class="Careers">We're-hiring</span></li></ul></div>
@@ -287,8 +288,8 @@ button {
        <div class="row justify-content-center mt-0 pt-0 row-1 mb-0  px-sm-3 px-2">
             <div class="col-12">
                 <div class="row my-4 row-1 no-gutters">
-                    <div class="col-sm-3 col-auto text-center"><small>&#9400; Stride Softwere</small></div><div class="col-md-3 col-auto "></div><div class="col-md-3 col-auto"></div>
-                    <div class="col  my-auto text-md-left  text-right "> <small> hello@getstride.com <span><img src="https://i.imgur.com/TtB6MDc.png" class="img-fluid "  width="25"></span> <span><img src="https://i.imgur.com/N90KDYM.png" class="img-fluid "  width="25"></span></small>  </div> 
+                    <div class="col-sm-3 col-auto text-center"><small>&#9400; Erimias Siraye 2022</small></div><div class="col-md-3 col-auto "></div><div class="col-md-3 col-auto"></div>
+                    <div class="col  my-auto text-md-left  text-right "> <small> erimias46@gmail.com <a href="http://twiter"></a><span><img src="https://i.imgur.com/TtB6MDc.png" class="img-fluid "  width="25"></span> <span><img src="https://i.imgur.com/N90KDYM.png" class="img-fluid "  width="25"></span></small>  </div> 
                 </div>
             </div>
         </div>

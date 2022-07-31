@@ -81,7 +81,47 @@ if (isset($_POST['update'])) {
 
     $sql = "UPDATE contract SET edate ='$redate'  WHERE userid='$id'";
 
-
+// Inserting the file in renewal
+$target_dir = "../registeration/uploads/";
+ $target_file = $target_dir . basename($_FILES["rpdf"]["name"]);
+ $uploadOk = 1;
+ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+ 
+ // Check if image file is a actual image or fake image
+ 
+ 
+ // Check if file already exists
+ if (file_exists($target_file)) {
+   echo "Sorry, file already exists.";
+   $uploadOk = 0;
+ }
+ 
+ // Check file size
+ if ($_FILES["rpdf"]["size"] > 103500000) {
+   echo "Sorry, your file is too large.";
+   $uploadOk = 0;
+ }
+ 
+ // Allow certain file formats
+ if($imageFileType != "doc" && $imageFileType != "docx" && $imageFileType != "pdf"
+ && $imageFileType != "txt" ) {
+   echo "Sorry, only doc, docx, pdf & txt files are allowed.";
+   $uploadOk = 0;
+ }
+ 
+ // Check if $uploadOk is set to 0 by an error
+ if ($uploadOk == 0) {
+   echo "Sorry, your file was not uploaded.";
+ // if everything is ok, try to upload file
+ } else {
+   if (move_uploaded_file($_FILES["rpdf"]["tmp_name"], $target_file)) {
+     echo "The file ". htmlspecialchars( basename( $_FILES["rpdf"]["name"])). " has been uploaded.";
+   } else {
+     echo "Sorry, there was an error uploading your file.";
+   }
+ }
+$target_dir1="registeration/uploads/";
+ $target_file1 = $target_dir1 . basename($_FILES["rpdf"]["name"]);
 
 
     if (mysqli_query($conn, $sql)) {
@@ -89,7 +129,7 @@ if (isset($_POST['update'])) {
         echo "Error updating record: " . mysqli_error($conn);
     }
     $count = 1;
-    $sql8 = "Insert into renewal (userid,	sdate,edate,renewenddate,adminid,renewcount,renewpdf) values('$id','$sdate','$edate','$redate','$adminid','$count','$pdf')";
+    $sql8 = "Insert into renewal (userid,sdate,edate,renewenddate,adminid,renewcount,renewpdf) values('$id','$sdate','$edate','$redate','$adminid','$count',' $target_file1')";
     if (mysqli_query($conn, $sql8)) {
     } else {
         echo "Error updating record: " . mysqli_error($conn);
@@ -539,7 +579,7 @@ if (isset($_POST['update'])) {
 
 
 
-                                        <span><input type="file"> </span>
+                                        <span><input type="file" name="rpdf"> </span>
 
                                         <span><button class="button-30" type="submit" name="update" role="button" style="background-color:green;color:white;">
                                                 UPDATE
@@ -647,7 +687,7 @@ if (isset($_POST['update'])) {
 
 
 
-                    <span><input type="file"> </span>
+                    <span><input type="file" name="rpdf"> </span>
 
                     <span><button class="button-30" type="submit" name="update" role="button" style="background-color:green;color:white;">
                             UPDATE

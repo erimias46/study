@@ -330,14 +330,7 @@ $target_dir1="registeration/uploads/";
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
-                        <li class=" in">
-                            <form role="search" class="app-search d-none d-md-block me-3">
-                                <input type="text" placeholder="Search..." class="form-control mt-0">
-                                <a href="" class="active">
-                                    <i class="fa fa-search"></i>
-                                </a>
-                            </form>
-                        </li>
+                        
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
@@ -436,7 +429,7 @@ $target_dir1="registeration/uploads/";
           <div class="row gx-xl-5">
             <div class="col-md-4">
               <h5>Personal Infromation</h5>
-              <p class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam et ducimus velit, facere quaerat debitis modi asperiores aspernatur corrupti, sit aliquam.</p>
+              <p class="text-muted"></p>
             </div>
 
             <div class="col-md-8">
@@ -483,7 +476,7 @@ $target_dir1="registeration/uploads/";
               </div>
               <label for="" style="color:green;">Choosen</label> <?php echo $psex ?>
               <div class="mb-3">
-                <label for="exampleInput2" class="form-label">Email address</label>
+                <label for="exampleInput2" class="form-label">Email address</label> <?php echo $pemail ?>
                 <input type="email" name="pemail" class="form-control" id="exampleInput2" style="max-width: 500px;" value="<?php echo $pemail?>" />
               </div>
               <div class="mb-3">
