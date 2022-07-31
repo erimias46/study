@@ -229,9 +229,9 @@ if (isset($_GET['view'])) {
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false">
+              <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../index.php" aria-expanded="false">
                 <i class="fa fa-table" aria-hidden="true"></i>
-                <span class="hide-menu">Basic Table</span>
+                <span class="hide-menu">Registeration</span>
               </a>
             </li>
 
@@ -435,7 +435,7 @@ if (isset($_GET['view'])) {
 
 
 
-          <div class="col-lg-10" style="margin-top:50px">
+          <div class="col-lg-12" style="margin-top:50px">
             <div class="card mb-8">
               <div class="card-body">
                 <label > Renewal History</label>
@@ -448,28 +448,48 @@ if (isset($_GET['view'])) {
                       <th scope="col">Renewed Date</th>
                       <th scope="col">Count</th>
                       <th scope="col">Renewed By</th>
+                      <th scope="col">Renewal Document</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <th scope="row">1</th>
+                    <?php 
+                    $rcount=1;
+                    $sql5 = "SELECT * from renewal where userid='$id'";
+
+$result5 = mysqli_query($conn, $sql5);
+while ($row5 = mysqli_fetch_assoc($result5)) {
+
+  $rsdate = $row5['sdate'];
+  $redate = $row5['edate'];
+  $rredate = $row5['renewenddate'];
+  $count=$row5['renewcount'];
+  $renewpdf = $row5['renewpdf'];
+  $adminr=$row5['adminid'];
+  $sql6 = "SELECT * from admin where adminid='$adminr'";
+
+  $result6 = mysqli_query($conn, $sql6);
+  while ($row6 = mysqli_fetch_assoc($result6)) {
+    $byadmin=$row6['fullname'];?>
+    <tr>
+                    <th scope="row"><?php echo $rcount;?></th>
                       <td><?php echo $rsdate;?></td>
                       <td><?php echo $redate;?></td>
                       <td><?php echo $rredate;?></td>
                       <td><?php echo $count;?></td>
                       <td><?php echo $byadmin;?></td>
+                      <td> <a href="../<?= $renewpdf ?> " target="_blank">PDF</a></td>
+
                     </tr>
-                    <tr>
-                      <th scope="row">2</th>
-                      <td>Jacob</td>
-                      <td>Thornton</td>
-                      <td>@fat</td>
-                    </tr>
-                    <tr>
-                      <th scope="row">3</th>
-                      <td colspan="2">Larry the Bird</td>
-                      <td>@twitter</td>
-                    </tr>
+                    <?php
+                    $rcount++;
+    
+  }
+}?>
+                    
+
+
+                   
+                    
                   </tbody>
                 </table>
 

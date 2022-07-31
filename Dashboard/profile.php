@@ -126,7 +126,8 @@ $result4= mysqli_query($conn, $sql4);
                         <!-- Logo text -->
                         <span class="logo-text">
                             <!-- dark Logo text -->
-                            <img src="plugins/images/logo-text.png" alt="homepage" />
+                            <h3 style="color:black;">Study leave</h2>
+
                         </span>
                     </a>
                     <!-- ============================================================== -->
@@ -196,10 +197,16 @@ $result4= mysqli_query($conn, $sql4);
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hide-menu">Profile</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../index.php" aria-expanded="false">
+                                <i class="fa fa-table" aria-hidden="true"></i>
+                                <span class="hide-menu">Registeration</span>
                             </a>
                         </li>
                         <li class="text-center p-20 upgrade-btn">
@@ -207,6 +214,7 @@ $result4= mysqli_query($conn, $sql4);
                                 class="btn d-grid btn-danger text-white">
                                 Logout</a>
                         </li>
+                        
                         
                        
                         

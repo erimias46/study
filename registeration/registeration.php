@@ -84,9 +84,12 @@ if (isset($_POST['submit'])) {
 
   // Now let's move the uploaded image into the folder: image
 
-
-
-  $sql = "INSERT INTO personal (userid,firstname, lastname, email ,acadamic,sex, college,department,award,phone) VALUES ('$userid','$pfirstname', '$plastname', '$pemail','$pacadamic','$psex','$pcollege','$pdepartment','$pscholar','$pphone');";
+  if(!empty($pfirstname) && !empty($plastname)  && !empty($pemail)  && !empty($pacadamic)  && !empty($psex)  && !empty($pcollege)  && !empty($pdepartment)  && !empty($paward)  && !empty($pphone) 
+   && !empty($gfirstname) && !empty($glastname) && !empty($gemail) && !empty($gsex) && !empty($gemail) && !empty($gphone)
+    && !empty($uniname) && !empty($unicountry) && !empty($uniemail) 
+    && !empty($sdate) && !empty($edate)  && !empty($pdf))
+  {
+    $sql = "INSERT INTO personal (userid,firstname, lastname, email ,acadamic,sex, college,department,award,phone) VALUES ('$userid','$pfirstname', '$plastname', '$pemail','$pacadamic','$psex','$pcollege','$pdepartment','$pscholar','$pphone');";
   $sql .= "INSERT INTO guarantee (userid,firstname, lastname,sex,email,phone) VALUES ('$userid','$gfirstname', '$glastname','$gsex', '$gemail','$gphone');";
   $sql .= "INSERT INTO university (userid,uniname,unicountry,uniemail) VALUES ('$userid','$uniname', '$unicountry','$uniemail');";
   $sql .= "INSERT INTO contract (userid,sdate,edate,pdf) VALUES ('$userid','$sdate', '$edate','$filename')";
@@ -96,6 +99,14 @@ if (isset($_POST['submit'])) {
   } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
   }
+  }
+  else{
+    echo "Missing information";
+  }
+
+
+
+  
 
 
   mysqli_close($conn);
@@ -118,16 +129,20 @@ if (isset($_POST['submit'])) {
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
   <!-- MDB -->
   <link rel="stylesheet" href="css/mdb.min.css" />
+
+  <style>
+    
+  </style>
 </head>
 
-<body>
+<body >
   <!-- Start your project here-->
 
   <div class="container my-5">
-    <div class="card">
+    <div class="card  gradient-custom1" >
       <form action=" " method="post" enctype="multipart/form-data">
         <!-- Card header -->
-        <div class="card-header py-4 px-5 bg-light border-0">
+        <div class="card-header py-4 px-5 bg-light  border-0" style="background-color: blue;">
           <h4 class="mb-0 fw-bold" style="padding-top:40px">Add Person</h4>
         </div>
 
@@ -142,11 +157,11 @@ if (isset($_POST['submit'])) {
             <div class="col-md-8">
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">First Name</label>
-                <input type="text" name="pfirstname" class="form-control" id="exampleInput1" style="max-width: 500px;" />
+                <input type="text" name="pfirstname"  required class="form-control" id="exampleInput1" style="max-width: 500px;" />
               </div>
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">Last name</label>
-                <input type="text" name="plastname" class="form-control" id="exampleInput1" style="max-width: 500px;" />
+                <input type="text" name="plastname" required  class="form-control" id="exampleInput1" style="max-width: 500px;" />
               </div>
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">Acadamic Status</label>
@@ -180,15 +195,15 @@ if (isset($_POST['submit'])) {
               </div>
               <div class="mb-3">
                 <label for="exampleInput2" class="form-label">Email address</label>
-                <input type="email" name="pemail" class="form-control" id="exampleInput2" style="max-width: 500px;" />
+                <input type="email" name="pemail" required class="form-control" id="exampleInput2" style="max-width: 500px;" />
               </div>
               <div class="mb-3">
                 <label for="exampleInput2" class="form-label">College</label>
-                <input type="text" name="pcollege" class="form-control" id="exampleInput2" style="max-width: 500px;" />
+                <input type="text" name="pcollege"  required class="form-control" id="exampleInput2" style="max-width: 500px;" />
               </div>
               <div class="mb-3">
                 <label for="exampleInput2" class="form-label">Department</label>
-                <input type="text" name="pdepartment" class="form-control" id="exampleInput2" style="max-width: 500px;" />
+                <input type="text" name="pdepartment"  required class="form-control" id="exampleInput2" style="max-width: 500px;" />
               </div>
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">Scholarship Award</label>
@@ -222,11 +237,12 @@ if (isset($_POST['submit'])) {
               <div class="col-md-8">
                 <div class="mb-3">
                   <label for="exampleInput1" class="form-label">First Name</label>
-                  <input type="text" class="form-control" id="exampleInput1" name="gfirstname" style="max-width: 500px;" />
+                  <input type="text" class="form-control" id="exampleInput1"   name="gfirstname" style="max-width: 500px;" />
+                  
                 </div>
                 <div class="mb-3">
                   <label for="exampleInput1" class="form-label">Last name</label>
-                  <input type="text" class="form-control" id="exampleInput1" name="glastname" style="max-width: 500px;" />
+                  <input type="text" class="form-control" id="exampleInput1"  name="glastname" style="max-width: 500px;" />
                 </div>
 
 
@@ -272,7 +288,7 @@ if (isset($_POST['submit'])) {
             <div class="col-md-8">
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">University Name</label>
-                <input type="text" name="uniname" class="form-control" id="exampleInput1" style="max-width: 500px;" />
+                <input type="text" name="uniname" class="form-control" required id="exampleInput1" style="max-width: 500px;" />
               </div>
               <div class="mb-3">
                 <label for="exampleInput1" class="form-label">Country</label>
