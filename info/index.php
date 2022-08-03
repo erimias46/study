@@ -477,7 +477,7 @@ while ($row5 = mysqli_fetch_assoc($result5)) {
                       <td><?php echo $rredate;?></td>
                       <td><?php echo $count;?></td>
                       <td><?php echo $byadmin;?></td>
-                      <td> <a href="../<?= $renewpdf ?> " target="_blank">PDF</a></td>
+                      <td><a href="../<?= $renewpdf ?> " target="_blank">PDF</a></td>
 
                     </tr>
                     <?php

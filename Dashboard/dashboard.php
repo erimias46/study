@@ -121,7 +121,7 @@ $target_dir = "../registeration/uploads/";
    }
  }
 $target_dir1="registeration/uploads/";
- $target_file1 = $target_dir1 . basename($_FILES["rpdf"]["name"]);
+ $target_file1 =$target_dir1 . basename($_FILES["rpdf"]["name"]);
 
 
     if (mysqli_query($conn, $sql)) {
@@ -129,7 +129,7 @@ $target_dir1="registeration/uploads/";
         echo "Error updating record: " . mysqli_error($conn);
     }
     $count = 1;
-    $sql8 = "Insert into renewal (userid,sdate,edate,renewenddate,adminid,renewcount,renewpdf) values('$id','$sdate','$edate','$redate','$adminid','$count',' $target_file1')";
+    $sql8 = "Insert into renewal (userid,sdate,edate,renewenddate,adminid,renewcount,renewpdf) values('$id','$sdate','$edate','$redate','$adminid','$count','$target_file1')";
     if (mysqli_query($conn, $sql8)) {
     } else {
         echo "Error updating record: " . mysqli_error($conn);
