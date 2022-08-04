@@ -84,11 +84,11 @@ if (isset($_POST['submit'])) {
 
   // Now let's move the uploaded image into the folder: image
 
-  if(!empty($pfirstname) && !empty($plastname)  && !empty($pemail)  && !empty($pacadamic)  && !empty($psex)  && !empty($pcollege)  && !empty($pdepartment)  && !empty($paward)  && !empty($pphone) 
-   && !empty($gfirstname) && !empty($glastname) && !empty($gemail) && !empty($gsex) && !empty($gemail) && !empty($gphone)
-    && !empty($uniname) && !empty($unicountry) && !empty($uniemail) 
-    && !empty($sdate) && !empty($edate)  && !empty($pdf))
-  {
+  // if(!empty($pfirstname) && !empty($plastname)  && !empty($pemail)  && !empty($pacadamic)  && !empty($psex)  && !empty($pcollege)  && !empty($pdepartment)  && !empty($paward)  && !empty($pphone) 
+  //  && !empty($gfirstname) && !empty($glastname) && !empty($gemail)  && !empty($gemail) && !empty($gphone)
+  //   && !empty($uniname) && !empty($unicountry) && !empty($uniemail) 
+  //   && !empty($sdate) && !empty($edate)  && !empty($pdf))
+  // {
     $sql = "INSERT INTO personal (userid,firstname, lastname, email ,acadamic,sex, college,department,award,phone) VALUES ('$userid','$pfirstname', '$plastname', '$pemail','$pacadamic','$psex','$pcollege','$pdepartment','$pscholar','$pphone');";
   $sql .= "INSERT INTO guarantee (userid,firstname, lastname,sex,email,phone) VALUES ('$userid','$gfirstname', '$glastname','$gsex', '$gemail','$gphone');";
   $sql .= "INSERT INTO university (userid,uniname,unicountry,uniemail) VALUES ('$userid','$uniname', '$unicountry','$uniemail');";
@@ -99,10 +99,10 @@ if (isset($_POST['submit'])) {
   } else {
     echo "Error: " . $sql . "<br>" . mysqli_error($conn);
   }
-  }
-  else{
-    echo "Missing information";
-  }
+//}
+  // else{
+  //   echo "Missing information";
+  // }
 
 
 

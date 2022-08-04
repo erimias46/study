@@ -33,12 +33,12 @@ if (isset($_POST['submit'])) {
         if($row['level']==1){
           $_SESSION['level']=$row['level'];
           $_SESSION['adminid']=$row['adminid'];
-          header('Location: ../index.php');
+          header('Location: ../Homepage/home.php');
         }
         else{
           $_SESSION['level']=$row['level'];
           $_SESSION['adminid']=$row['adminid'];
-          header('Location: ../index.php');
+          header('Location: ../Homepage/home.php');
 
         }
 
