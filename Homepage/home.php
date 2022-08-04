@@ -302,23 +302,36 @@ if (!isset($_SESSION['adminid']) and !isset($_SESSION['level'])) {
                     <h3 class="mb-4">Geology </h3>
                   </div>
 
-                  <br> <img src="assets/img/Geo.webp" class="img-fluid" width="450" height="300">
+                  <br> <img src="assets/img/Geo_450x300.webp" class="img-fluid" width="450" height="300">
                   <br>
                   <p class="small color-text">This piece of software can help manage and track the students </p>
                   <button type="button" class="btn btn-primary border-0 my-4">
-                    <b>Contact the Dean</b>
+                    <b>Contact the Head</b>
                   </button>
 
                 </div>
                 <div class="col-md-4 col">
                   <div class="card-title">
-                    <h3 class="mb-4">FOOD ENGINEERING </h3>
+                    <h3 class="mb-4">Industrial Chemistry</h3>
                   </div>
-                  <br> <img src="assets/img/food4.webp" class="img-fluid" width="450" height="450">
+
+                  <br> <img src="assets/img/indu2_450x300.png" class="img-fluid" width="450" height="300">
                   <br>
                   <p class="small color-text">This piece of software can help manage and track the students </p>
                   <button type="button" class="btn btn-primary border-0 my-4">
-                    <b>Contact the Dean</b>
+                    <b>Contact the Head</b>
+                  </button>
+
+                </div>
+                <div class="col-md-4 col">
+                  <div class="card-title">
+                    <h3 class="mb-4">Food Science and Applied Nutrition (FSAN) </h3>
+                  </div>
+                   <img src="assets/img/food4_450x300.webp" class="img-fluid" width="450" height="450">
+                  
+                  <p class="small color-text">This piece of software can help manage and track the students </p>
+                  <button type="button" class="btn btn-primary border-0 my-4">
+                    <b>Contact the Head</b>
                   </button>
 
                 </div>
@@ -338,9 +351,9 @@ if (!isset($_SESSION['adminid']) and !isset($_SESSION['level'])) {
               </div>
               <div class="col-sm-3  my-sm-0 mt-5">
                 <ul class="list-unstyled">
-                  <li class="mt-0">Platform</li>
-                  <li>Help Center</li>
-                  <li>Security</li>
+                  <li class="mt-0"> <a href="http://www.aastu.edu.et/">AASTU</a></li>
+                  <li><a href="https://moe.gov.et">Minster of Education</a></li>
+                  <li><a href="https://mint.gov.et/?lang=en">Minster of Innovation and Technology</a></li>
                 </ul>
               </div>
               <div class="col-sm-3  my-sm-0 mt-5">
