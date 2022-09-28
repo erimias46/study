@@ -148,8 +148,10 @@ $target_dir1="registeration/uploads/";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="keywords" content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
-    <meta name="description" content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
+    <meta name="keywords"
+        content="wrappixel, admin dashboard, html css dashboard, web dashboard, bootstrap 5 admin, bootstrap 5, css3 dashboard, bootstrap 5 dashboard, Ample lite admin bootstrap 5 dashboard, frontend, responsive bootstrap 5 admin template, Ample admin lite dashboard bootstrap 5 dashboard template">
+    <meta name="description"
+        content="Ample Admin Lite is powerful and clean admin dashboard template, inpired from Bootstrap Framework">
     <meta name="robots" content="noindex,nofollow">
     <title>Study leave</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/ample-admin-lite/" />
@@ -162,50 +164,50 @@ $target_dir1="registeration/uploads/";
     <link href="css/style.min.css" rel="stylesheet">
 
     <style>
-        .button-30 {
-            align-items: center;
-            appearance: none;
-            background-color: #FCFCFD;
-            border-radius: 4px;
-            border-width: 0;
-            box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-            box-sizing: border-box;
-            color: #36395A;
-            cursor: pointer;
-            display: inline-flex;
-            font-family: "JetBrains Mono", monospace;
-            height: 30px;
-            justify-content: center;
-            line-height: 1;
-            list-style: none;
-            overflow: hidden;
-            padding-left: 16px;
-            padding-right: 16px;
-            position: relative;
-            text-align: left;
-            text-decoration: none;
-            transition: box-shadow .15s, transform .15s;
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
-            white-space: nowrap;
-            will-change: box-shadow, transform;
-            font-size: 18px;
-        }
+    .button-30 {
+        align-items: center;
+        appearance: none;
+        background-color: #FCFCFD;
+        border-radius: 4px;
+        border-width: 0;
+        box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+        box-sizing: border-box;
+        color: #36395A;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: "JetBrains Mono", monospace;
+        height: 30px;
+        justify-content: center;
+        line-height: 1;
+        list-style: none;
+        overflow: hidden;
+        padding-left: 16px;
+        padding-right: 16px;
+        position: relative;
+        text-align: left;
+        text-decoration: none;
+        transition: box-shadow .15s, transform .15s;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        white-space: nowrap;
+        will-change: box-shadow, transform;
+        font-size: 18px;
+    }
 
-        .button-30:focus {
-            box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-        }
+    .button-30:focus {
+        box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    }
 
-        .button-30:hover {
-            box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-            transform: translateY(-2px);
-        }
+    .button-30:hover {
+        box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+        transform: translateY(-2px);
+    }
 
-        .button-30:active {
-            box-shadow: #D6D6E7 0 3px 7px inset;
-            transform: translateY(2px);
-        }
+    .button-30:active {
+        box-shadow: #D6D6E7 0 3px 7px inset;
+        transform: translateY(2px);
+    }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
 </head>
@@ -226,7 +228,8 @@ $target_dir1="registeration/uploads/";
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full" data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
@@ -257,7 +260,8 @@ $target_dir1="registeration/uploads/";
                     <!-- toggle and nav items -->
 
                     <!-- ============================================================== -->
-                    <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                    <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
+                        href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -267,7 +271,8 @@ $target_dir1="registeration/uploads/";
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
-                    <p class="in" style="color:white;font-size:30px;text-align:center; margin-left:150px;margin-top:10px">College
+                    <p class="in"
+                        style="color:white;font-size:30px;text-align:center; margin-left:150px;margin-top:10px">College
                         of Applied Science</p>
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
 
@@ -280,7 +285,9 @@ $target_dir1="registeration/uploads/";
                         <!-- ============================================================== -->
                         <li>
                             <a class="profile-pic" href="#">
-                                <img src="plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><span class="text-white font-medium"><?php echo $adminname;
+                                <img src="plugins/images/users/varun.jpg" alt="user-img" width="36"
+                                    class="img-circle"><span
+                                    class="text-white font-medium"><?php echo $adminname;
                                                                                                                                                             ?></span></a>
                         </li>
                         <!-- ============================================================== -->
@@ -304,19 +311,22 @@ $target_dir1="registeration/uploads/";
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.php" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="dashboard.php"
+                                aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.php" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.php"
+                                aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hide-menu">Profile</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../index.php" aria-expanded="false">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="../index.php"
+                                aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
                                 <span class="hide-menu">Registeration</span>
                             </a>
@@ -391,43 +401,43 @@ $target_dir1="registeration/uploads/";
                                     <div class="container">
                                         <canvas id="mychart"> </canvas>
                                         <script>
-                                            const labels=<?php echo json_encode($sex);?>;
-                                            const datas=<?php echo json_encode($gendercount);?>;
-                                            let mychart = document.getElementById('mychart').getContext('2d');
-                                            let massPopChart = new Chart(mychart, {
-                                                type: 'bar',
-                                                data: {
-                                                    labels: labels,
-                                                    datasets: [{
-                                                        label: '#',
-                                                        data: datas,
-                                                        backgroundColor: [
-                                                            'rgba(255, 99, 132, 0.2)',
-                                                            'rgba(54, 162, 235, 0.2)',
-                                                            'rgba(255, 206, 86, 0.2)',
-                                                            'rgba(75, 192, 192, 0.2)',
-                                                            'rgba(153, 102, 255, 0.2)',
-                                                            'rgba(255, 159, 64, 0.2)'
-                                                        ],
-                                                        borderColor: [
-                                                            'rgba(255, 99, 132, 1)',
-                                                            'rgba(54, 162, 235, 1)',
-                                                            'rgba(255, 206, 86, 1)',
-                                                            'rgba(75, 192, 192, 1)',
-                                                            'rgba(153, 102, 255, 1)',
-                                                            'rgba(255, 159, 64, 1)'
-                                                        ],
-                                                        borderWidth: 1
-                                                    }]
-                                                },
-                                                options: {
-                                                    scales: {
-                                                        y: {
-                                                            beginAtZero: true
-                                                        }
+                                        const labels = <?php echo json_encode($sex);?>;
+                                        const datas = <?php echo json_encode($gendercount);?>;
+                                        let mychart = document.getElementById('mychart').getContext('2d');
+                                        let massPopChart = new Chart(mychart, {
+                                            type: 'bar',
+                                            data: {
+                                                labels: labels,
+                                                datasets: [{
+                                                    label: '#',
+                                                    data: datas,
+                                                    backgroundColor: [
+                                                        'rgba(255, 99, 132, 0.2)',
+                                                        'rgba(54, 162, 235, 0.2)',
+                                                        'rgba(255, 206, 86, 0.2)',
+                                                        'rgba(75, 192, 192, 0.2)',
+                                                        'rgba(153, 102, 255, 0.2)',
+                                                        'rgba(255, 159, 64, 0.2)'
+                                                    ],
+                                                    borderColor: [
+                                                        'rgba(255, 99, 132, 1)',
+                                                        'rgba(54, 162, 235, 1)',
+                                                        'rgba(255, 206, 86, 1)',
+                                                        'rgba(75, 192, 192, 1)',
+                                                        'rgba(153, 102, 255, 1)',
+                                                        'rgba(255, 159, 64, 1)'
+                                                    ],
+                                                    borderWidth: 1
+                                                }]
+                                            },
+                                            options: {
+                                                scales: {
+                                                    y: {
+                                                        beginAtZero: true
                                                     }
                                                 }
-                                            });
+                                            }
+                                        });
                                         </script>
                                     </div>
                                 </li>
@@ -441,47 +451,60 @@ $target_dir1="registeration/uploads/";
             </div>
 
 
-                <!-- ============================================================== -->
-                <!-- Tables -->
-                <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-md-12 col-lg-12 col-sm-12">
-                        <div class="white-box">
-                            <div class="d-md-flex mb-3">
-                                <h3 class="box-title mb-0">Full information</h3>
+            <!-- ============================================================== -->
+            <!-- Tables -->
+            <!-- ============================================================== -->
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div class="white-box">
+                        <div class="d-md-flex mb-3">
+                            <h3 class="box-title mb-0">Full information</h3>
 
 
 
-                                <form method="GET"  style="margin-left: 50px;">
-                                    <input type="text"  name ="search">
-                                    
-                                   <button type="submit" >Search</button>
-                                </form>
+                            <form method="GET" style="margin-left: 50px;">
+                                <input type="text" name="search">
+
+                                <button type="submit">Search</button>
+                            </form>
+
+                            <form method="GET" style="margin-left: 50px;">
+                                <select name="filter" id="">
+
+                                    <option value="Geology">Geology</option>
+                                    <option value="Industrial">Industrial</option>
+                                    <option value="Food Science">FSAN</option>
+
+                                </select>
+
+
+                                <button type="submit">Filter</button>
+                            </form>
 
 
 
-                            </div>
-                            <div class="table-responsive">
-                                <table class="table no-wrap">
-                                    <thead>
-                                        <tr>
-                                            <th class="border-top-0">#</th>
-                                            <th class="border-top-0">First Name</th>
-                                            <th class="border-top-0">Last Name</th>
-                                            <th class="border-top-0">Awarded</th>
-                                            <th class="border-top-0">Starting Date</th>
-                                            <th class="border-top-0">Ending Date</th>
-                                            <th class="border-top-0">Countdown</th>
-                                            <th class="border-top-0">Email</th>
-                                            <th class="border-top-0">Contract file</th>
-                                            <th class="border-top-0">Action</th>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table no-wrap">
+                                <thead>
+                                    <tr>
+                                        <th class="border-top-0">#</th>
+                                        <th class="border-top-0">First Name</th>
+                                        <th class="border-top-0">Last Name</th>
+                                        <th class="border-top-0">Awarded</th>
+                                        <th class="border-top-0">Starting Date</th>
+                                        <th class="border-top-0">Ending Date</th>
+                                        <th class="border-top-0">Countdown</th>
+                                        <th class="border-top-0">Email</th>
+                                        <th class="border-top-0">Contract file</th>
+                                        <th class="border-top-0">Action</th>
 
 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-                                        <?php
+                                    <?php
                                         if(!isset($_GET['search'])){
                                         $sql = "SELECT firstname,lastname,email,lastname,pdf,sdate,edate,award,personal.userid from personal JOIN contract ON personal.userid=contract.userid;";
 
@@ -505,46 +528,56 @@ $target_dir1="registeration/uploads/";
                                         ?>
 
 
-                                            <tr>
-                                                <td><?php echo $v;
+                                    <tr>
+                                        <td><?php echo $v;
                                                     $v++; ?></td>
-                                                <td class="txt-oflo"><?= $row["firstname"] ?></td>
-                                                <td><?= $row["lastname"] ?></td>
-                                                <td class="txt-oflo"><?= $row["award"] ?></td>
-                                                <td><span class="text-success"><?= $row["sdate"] ?></span></td>
-                                                <td><span class="text-success"><?= $row["edate"] ?></span></td>
-                                                <td><span class="text-success"><?= $days ?></span></td>
-                                                <td><span class="text-success"><?= $row["email"] ?></span></td>
-                                                <td><span class="text-success"><a href="../<?= $row["pdf"] ?> " target="_blank">PDF</a></span></td>
-                                                <?php if ($level == 1) { ?>
-                                                    <td><button class="button-30" role="button" style="background-color:blue;color:white;">
-                                                            <i class="fas fa-edit"></i>
-                                                            <a name="edits" href="update.php?edit=<?php echo $row['userid']; ?>">
-                                                                Edit</button></a>
-                                                        <button class="button-30" role="button" style="background-color:red;color:white;">
-                                                            <i class="fa fa-trash"></i>
-                                                            <a name="delete" href="dashboard.php?delete=<?php echo $row['userid']; ?>">
-                                                                Delete</a>
-                                                        </button>
+                                        <td class="txt-oflo"><?= $row["firstname"] ?></td>
+                                        <td><?= $row["lastname"] ?></td>
+                                        <td class="txt-oflo"><?= $row["award"] ?></td>
+                                        <td><span class="text-success"><?= $row["sdate"] ?></span></td>
+                                        <td><span class="text-success"><?= $row["edate"] ?></span></td>
+                                        <td><span class="text-success"><?= $days ?></span></td>
+                                        <td><span class="text-success"><?= $row["email"] ?></span></td>
+                                        <td><span class="text-success"><a href="../<?= $row["pdf"] ?> "
+                                                    target="_blank">PDF</a></span></td>
+                                        <?php if ($level == 1) { ?>
+                                        <td><button class="button-30" role="button"
+                                                style="background-color:blue;color:white;">
+                                                <i class="fas fa-edit"></i>
+                                                <a name="edits" href="update.php?edit=<?php echo $row['userid']; ?>">
+                                                    Edit</button></a>
+                                            <button class="button-30" role="button"
+                                                style="background-color:red;color:white;">
+                                                <i class="fa fa-trash"></i>
+                                                <a name="delete"
+                                                    href="dashboard.php?delete=<?php echo $row['userid']; ?>">
+                                                    Delete</a>
+                                            </button>
 
-                                                        <button class="button-30" role="button" style="background-color:green;color:white;">
-                                                            <a name="edit" href="dashboard.php?renewal=<?php echo $row['userid']; ?>">
-                                                                Renewal </a>
-                                                        </button>
+                                            <button class="button-30" role="button"
+                                                style="background-color:green;color:white;">
+                                                <a name="edit"
+                                                    href="dashboard.php?renewal=<?php echo $row['userid']; ?>">
+                                                    Renewal </a>
+                                            </button>
 
-                                                        <button class="button-30" role="button" style="background-color:yellow;color:white;">
-                                                            <a name="edit" href="../info/index.php?view=<?php echo $row['userid']; ?>">
-                                                                View </a>
-                                                        </button>
-                                                    </td>
-                                                <?php } else { ?>
-                                                    <td>
-                                                        <button class="button-30" role="button" style="background-color:yellow;color:white;">
-                                                            <a name="edit" href="../info/index.php?view=<?php echo $row['userid']; ?>">
-                                                                View </a>
-                                                        </button>
-                                                    </td>
-                                            </tr>
+                                            <button class="button-30" role="button"
+                                                style="background-color:yellow;color:white;">
+                                                <a name="edit"
+                                                    href="../info/index.php?view=<?php echo $row['userid']; ?>">
+                                                    View </a>
+                                            </button>
+                                        </td>
+                                        <?php } else { ?>
+                                        <td>
+                                            <button class="button-30" role="button"
+                                                style="background-color:yellow;color:white;">
+                                                <a name="edit"
+                                                    href="../info/index.php?view=<?php echo $row['userid']; ?>">
+                                                    View </a>
+                                            </button>
+                                        </td>
+                                    </tr>
 
                                     <?php
                                                 }
@@ -556,39 +589,40 @@ $target_dir1="registeration/uploads/";
                                     ?>
 
 
-                                    </tbody>
-                                </table>
-                            </div>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
 
-                <?php if (isset($_GET['renewal'])) { ?>
+            <?php if (isset($_GET['renewal'])) { ?>
 
-                    <div class="col-lg-4 col-md-12">
-                        <div class="white-box analytics-info">
-                            <h3 class="box-title">Renewal</h3>
-                            <ul>
-                                <form action="" method="post" enctype="multipart/form-data">
-                                    <div><label for="">Renewal End date</label>
-                                        <?php if (isset($edate)) echo $edate; ?>
-                                        <span><input type="date" name="redate"> </span>
+            <div class="col-lg-4 col-md-12">
+                <div class="white-box analytics-info">
+                    <h3 class="box-title">Renewal</h3>
+                    <ul>
+                        <form action="" method="post" enctype="multipart/form-data">
+                            <div><label for="">Renewal End date</label>
+                                <?php if (isset($edate)) echo $edate; ?>
+                                <span><input type="date" name="redate"> </span>
 
-                                        <label for="">Renewal Contract PDF</label>
+                                <label for="">Renewal Contract PDF</label>
 
 
 
-                                        <span><input type="file" name="rpdf"> </span>
+                                <span><input type="file" name="rpdf"> </span>
 
-                                        <span><button class="button-30" type="submit" name="update" role="button" style="background-color:green;color:white;">
-                                                UPDATE
-                                            </button></span></li>
-                                </form>
-                            </ul>
-                        </div>
-                    </div>
-                <?php } else {
+                                <span><button class="button-30" type="submit" name="update" role="button"
+                                        style="background-color:green;color:white;">
+                                        UPDATE
+                                    </button></span></li>
+                        </form>
+                    </ul>
+                </div>
+            </div>
+            <?php } else {
                 }}else{
                     $filtervalues=$_GET['search'];
                     $sql = "SELECT firstname,lastname,email,lastname,pdf,sdate,edate,award,personal.userid from personal JOIN contract ON personal.userid=contract.userid  where firstname LIKE'%$filtervalues%';";
@@ -613,48 +647,48 @@ $target_dir1="registeration/uploads/";
                     ?>
 
 
-                        <tr>
-                            <td><?php echo $v;
+            <tr>
+                <td><?php echo $v;
                                 $v++; ?></td>
-                            <td class="txt-oflo"><?= $row["firstname"] ?></td>
-                            <td><?= $row["lastname"] ?></td>
-                            <td class="txt-oflo"><?= $row["award"] ?></td>
-                            <td><span class="text-success"><?= $row["sdate"] ?></span></td>
-                            <td><span class="text-success"><?= $row["edate"] ?></span></td>
-                            <td><span class="text-success"><?= $days ?></span></td>
-                            <td><span class="text-success"><?= $row["email"] ?></span></td>
-                            <td><span class="text-success"><a href="../<?= $row["pdf"] ?> " target="_blank">PDF</a></span></td>
-                            <?php if ($level == 1) { ?>
-                                <td><button class="button-30" role="button" style="background-color:blue;color:white;">
-                                        <i class="fas fa-edit"></i>
-                                        <a name="edits" href="update.php?edit=<?php echo $row['userid']; ?>">
-                                            Edit</button></a>
-                                    <button class="button-30" role="button" style="background-color:red;color:white;">
-                                        <i class="fa fa-trash"></i>
-                                        <a name="delete" href="dashboard.php?delete=<?php echo $row['userid']; ?>">
-                                            Delete</a>
-                                    </button>
+                <td class="txt-oflo"><?= $row["firstname"] ?></td>
+                <td><?= $row["lastname"] ?></td>
+                <td class="txt-oflo"><?= $row["award"] ?></td>
+                <td><span class="text-success"><?= $row["sdate"] ?></span></td>
+                <td><span class="text-success"><?= $row["edate"] ?></span></td>
+                <td><span class="text-success"><?= $days ?></span></td>
+                <td><span class="text-success"><?= $row["email"] ?></span></td>
+                <td><span class="text-success"><a href="../<?= $row["pdf"] ?> " target="_blank">PDF</a></span></td>
+                <?php if ($level == 1) { ?>
+                <td><button class="button-30" role="button" style="background-color:blue;color:white;">
+                        <i class="fas fa-edit"></i>
+                        <a name="edits" href="update.php?edit=<?php echo $row['userid']; ?>">
+                            Edit</button></a>
+                    <button class="button-30" role="button" style="background-color:red;color:white;">
+                        <i class="fa fa-trash"></i>
+                        <a name="delete" href="dashboard.php?delete=<?php echo $row['userid']; ?>">
+                            Delete</a>
+                    </button>
 
-                                    <button class="button-30" role="button" style="background-color:green;color:white;">
-                                        <a name="edit" href="dashboard.php?renewal=<?php echo $row['userid']; ?>">
-                                            Renewal </a>
-                                    </button>
+                    <button class="button-30" role="button" style="background-color:green;color:white;">
+                        <a name="edit" href="dashboard.php?renewal=<?php echo $row['userid']; ?>">
+                            Renewal </a>
+                    </button>
 
-                                    <button class="button-30" role="button" style="background-color:yellow;color:white;">
-                                        <a name="edit" href="../info/index.php?view=<?php echo $row['userid']; ?>">
-                                            View </a>
-                                    </button>
-                                </td>
-                            <?php } else { ?>
-                                <td>
-                                    <button class="button-30" role="button" style="background-color:yellow;color:white;">
-                                        <a name="edit" href="../info/index.php?view=<?php echo $row['userid']; ?>">
-                                            View </a>
-                                    </button>
-                                </td>
-                        </tr>
+                    <button class="button-30" role="button" style="background-color:yellow;color:white;">
+                        <a name="edit" href="../info/index.php?view=<?php echo $row['userid']; ?>">
+                            View </a>
+                    </button>
+                </td>
+                <?php } else { ?>
+                <td>
+                    <button class="button-30" role="button" style="background-color:yellow;color:white;">
+                        <a name="edit" href="../info/index.php?view=<?php echo $row['userid']; ?>">
+                            View </a>
+                    </button>
+                </td>
+            </tr>
 
-                <?php
+            <?php
                             }
                         }
 
@@ -664,79 +698,80 @@ $target_dir1="registeration/uploads/";
                 ?>
 
 
-                </tbody>
+            </tbody>
             </table>
         </div>
     </div>
-</div>
-</div>
-<!-- ============================================================== -->
-
-<?php if (isset($_GET['renewal'])) { ?>
-
-<div class="col-lg-4 col-md-12">
-    <div class="white-box analytics-info">
-        <h3 class="box-title">Renewal</h3>
-        <ul>
-            <form action="" method="post" enctype="multipart/form-data">
-                <div><label for="">Renewal End date</label>
-                    <?php if (isset($edate)) echo $edate; ?>
-                    <span><input type="date" name="redate"> </span>
-
-                    <label for="">Renewal Contract PDF</label>
-
-
-
-                    <span><input type="file" name="rpdf"> </span>
-
-                    <span><button class="button-30" type="submit" name="update" role="button" style="background-color:green;color:white;">
-                            UPDATE
-                        </button></span></li>
-            </form>
-        </ul>
     </div>
-</div>
-<?php } else {
-}} ?>
-                <!-- ============================================================== -->
-                <!-- End Container fluid  -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- footer -->
-                <!-- ============================================================== -->
-                <footer class="footer text-center"> 2022 © Erimias Designs
+    </div>
+    <!-- ============================================================== -->
 
-                </footer>
-                <!-- ============================================================== -->
-                <!-- End footer -->
-                <!-- ============================================================== -->
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Page wrapper  -->
-            <!-- ============================================================== -->
+    <?php if (isset($_GET['renewal'])) { ?>
+
+    <div class="col-lg-4 col-md-12">
+        <div class="white-box analytics-info">
+            <h3 class="box-title">Renewal</h3>
+            <ul>
+                <form action="" method="post" enctype="multipart/form-data">
+                    <div><label for="">Renewal End date</label>
+                        <?php if (isset($edate)) echo $edate; ?>
+                        <span><input type="date" name="redate"> </span>
+
+                        <label for="">Renewal Contract PDF</label>
+
+
+
+                        <span><input type="file" name="rpdf"> </span>
+
+                        <span><button class="button-30" type="submit" name="update" role="button"
+                                style="background-color:green;color:white;">
+                                UPDATE
+                            </button></span></li>
+                </form>
+            </ul>
         </div>
-        <!-- ============================================================== -->
-        <!-- End Wrapper -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- All Jquery -->
-        <!-- ============================================================== -->
-        <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
-        <!-- Bootstrap tether Core JavaScript -->
-        <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="js/app-style-switcher.js"></script>
-        <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
-        <!--Wave Effects -->
-        <script src="js/waves.js"></script>
-        <!--Menu sidebar -->
-        <script src="js/sidebarmenu.js"></script>
-        <!--Custom JavaScript -->
-        <script src="js/custom.js"></script>
-        <!--This page JavaScript -->
-        <!--chartis chart-->
-        <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
-        <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-        <script src="js/pages/dashboards/dashboard1.js"></script>
+    </div>
+    <?php } else {
+}} ?>
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- footer -->
+    <!-- ============================================================== -->
+    <footer class="footer text-center"> 2022 © Erimias Designs
+
+    </footer>
+    <!-- ============================================================== -->
+    <!-- End footer -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Page wrapper  -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/app-style-switcher.js"></script>
+    <script src="plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.js"></script>
+    <!--This page JavaScript -->
+    <!--chartis chart-->
+    <script src="plugins/bower_components/chartist/dist/chartist.min.js"></script>
+    <script src="plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="js/pages/dashboards/dashboard1.js"></script>
 </body>
 
 </html>
